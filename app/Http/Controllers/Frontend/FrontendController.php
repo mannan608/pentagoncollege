@@ -14,7 +14,7 @@ class FrontendController extends Controller
     public function landingPage()
     {
         return view('frontend.pages.home', [
-            'title' => 'Specter Training Center',
+            'title' => 'Pentagon College',
         ]);
     }
 

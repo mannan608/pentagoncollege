@@ -1,4 +1,4 @@
-# Specter Traning College
+# Pentagon College
 
 ### Check Your Environment
 
@@ -16,8 +16,8 @@ npm -v
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/mannan608/specter-training.git
-cd specter-training
+git clone https://github.com/mannan608/pentagoncollege.git
+cd pentagoncollege
 ```
 
 ### Step 2: Install PHP Dependencies
@@ -82,7 +82,7 @@ Update your `.env` file with your database credentials:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=specter_training_db
+DB_DATABASE=Pentagon_db
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
@@ -91,10 +91,10 @@ Create the database:
 
 ```bash
 # MySQL
-mysql -u root -p -e "CREATE DATABASE specter_training_db;"
+mysql -u root -p -e "CREATE DATABASE Pentagon_db;"
 
 # PostgreSQL
-createdb specter_training_db
+createdb Pentagon_db
 ```
 
 Run migrations:
@@ -295,7 +295,7 @@ php artisan make:migration create_your_table
 ## 📁 Project Structure
 
 ```
-specter_training/
+pentagoncollege/
 ├── app/                    # Application logic
 │   ├── Http/              # Controllers, Middleware, Requests
 │   ├── Models/            # Eloquent models

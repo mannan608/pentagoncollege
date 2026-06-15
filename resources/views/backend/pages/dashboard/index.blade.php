@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
 
 @section('content')
-<h1>Specter training college</h1>
+<h1>Pentagon College</h1>
 @endsection
