@@ -93,6 +93,10 @@ class RolePermissionSeeder extends Seeder
             'name' => config('rbac.super_admin_role'),
             'guard_name' => config('rbac.default_guard', 'web'),
         ]);
+           $defaultRole = Role::firstOrCreate([
+            'name' => 'default',
+            'guard_name' => config('rbac.default_guard', 'web'),
+        ]);
 
         $adminRole = Role::firstOrCreate([
             'name' => 'admin',
@@ -100,6 +104,7 @@ class RolePermissionSeeder extends Seeder
         ]);
 
         $adminRole->syncPermissions($permissions);
+        $superAdmin->syncPermissions($permissions);
 
         app(PermissionRegistrar::class)->forgetCachedPermissions();
     }
