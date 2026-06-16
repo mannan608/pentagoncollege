@@ -7,8 +7,8 @@
         <div class="space-y-5 text-center sm:text-left">
 
             <div class="flex sm:justify-start items-center justify-center">
-               <a href="/">
-                    <img src="{{asset('logo.webp')}}" alt="logo" class="w-24 h-auto">
+                <a href="/">
+                    <img src="{{ asset('logo.webp') }}" alt="logo" class="w-24 h-auto">
                 </a>
             </div>
 
@@ -16,17 +16,17 @@
 
                 <li class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                     <span class="font-semibold text-slate-700">Call:</span>
-                    0421 661 998
+                    02 9037 6310
                 </li>
 
                 <li class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                     <span class="font-semibold text-slate-700">Mail:</span>
-                    info@pentagoncollege.com
+                    info@pentagoncollege.edu.au
                 </li>
 
                 <li class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
                     <span class="font-semibold text-slate-700">Address:</span>
-                    PO Box 683, MOOREBANK, NSW, 1875
+                    235 Church St, Parramatta,NSW, Australia 2150
                 </li>
 
             </ul>
@@ -103,10 +103,16 @@
         <div class="space-y-5 text-center flex flex-col items-center">
 
             <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">
-                Qualifications
+                Quick Links
             </h4>
+            <ul class="space-y-2 text-sm">
 
-           
+                <li><a class="text-slate-500 hover:text-slate-900" href="#"> About us</a></li>
+                <li><a class="text-slate-500 hover:text-slate-900" href="#">Our Courses</a></li>
+                <li><a class="text-slate-500 hover:text-slate-900" href="#">Contact Us</a></li>
+
+            </ul>
+
 
         </div>
 
@@ -117,13 +123,11 @@
             <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">
                 Useful Links
             </h4>
-          
+
             <ul class="space-y-2 text-sm">
 
-                <li><a class="text-slate-500 hover:text-slate-900" href="https://www.usi.gov.au/"> Create USI</a></li>
-                <li><a class="text-slate-500 hover:text-slate-900" href="https://www.checked.com.au/">Create Police Report</a></li>
-                <li><a class="text-slate-500 hover:text-slate-900" href="https://www.service.nsw.gov.au/transaction/apply-for-a-working-with-children-check">Working with Children Check (WWCC)</a></li>
-                <li><a class="text-slate-500 hover:text-slate-900" href="https://www.service.nsw.gov.au/services/ndiswc">NDIS Check</a></li>
+                <li><a class="text-slate-500 hover:text-slate-900" href="#"> Our Agents</a></li>
+                <li><a class="text-slate-500 hover:text-slate-900" href="#">Student Information</a></li>
 
             </ul>
 
@@ -141,13 +145,14 @@
 
                 <li class="mb-3">
                     <div class="flex flex-wrap justify-center items-center gap-4  transition-all duration-500">
-                <img class="h-10 object-contain"
-                    data-alt="clean geometric logo of a professional education authority in black and white"
-                    src="{{ asset('patner_1.png') }}" alt="patner">
+                        <img class="h-10 object-contain"
+                            data-alt="clean geometric logo of a professional education authority in black and white"
+                            src="{{ asset('patner_1.png') }}" alt="patner">
 
-                <img class="h-10 object-contain" data-alt="sleek corporate mark for a global vocational training federation"
-                    src="{{ asset('patner_2.png') }}" alt="patner">
-            </div>
+                        <img class="h-10 object-contain"
+                            data-alt="sleek corporate mark for a global vocational training federation"
+                            src="{{ asset('patner_2.png') }}" alt="patner">
+                    </div>
                 </li>
                 <li><strong>RTO No. 45116</strong></li>
                 <li>ABN: 65 610 630 254</li>
@@ -166,11 +171,11 @@
             class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
 
             <p class="text-slate-500 text-xs sm:text-sm">
-                Copyright © 2026 All Rights Reserved Pentagon College PTY LTD.
+                Copyright © 2026 Pentagon College. All rights reserved.
             </p>
 
             <span class="text-slate-400 text-xs sm:text-sm">
-                RTO Code: 45116
+                CRICOS Provider Code: 04000A | RTO Number : 45822 | ABN: 33 644 086 895
             </span>
 
         </div>
