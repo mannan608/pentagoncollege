@@ -1,6 +1,10 @@
 @php
-    $selectedRoles = old('roles', $user?->roles->pluck('id')->map(fn ($id) => (string) $id)->all() ?? []);
-    $selectedPrimaryRole = old('primary_role_id', $user?->primary_role_id);
+    // Get default role
+    $defaultRole = \Spatie\Permission\Models\Role::where('name', 'default')->first();
+    
+    // For new user, use default role as default; for existing, use their values
+    $selectedRoles = old('roles', $user?->roles->pluck('id')->map(fn ($id) => (string) $id)->all() ?? ($defaultRole ? [(string) $defaultRole->id] : []));
+    $selectedPrimaryRole = old('primary_role_id', $user?->primary_role_id ?? $defaultRole?->id);
 @endphp
 
 <div class="grid gap-5 rounded-lg border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-gray-900 md:grid-cols-2">

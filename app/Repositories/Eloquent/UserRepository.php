@@ -27,6 +27,14 @@ class UserRepository implements UserRepositoryInterface
 
         $user = User::create($data);
 
+        // If no roles provided, assign default role
+        if (empty($roleIds)) {
+            $defaultRole = \Spatie\Permission\Models\Role::where('name', 'default')->first();
+            if ($defaultRole) {
+                $roleIds[] = $defaultRole->id;
+            }
+        }
+
         // Convert IDs to integer to ensure Spatie resolves by ID
         $user->syncRoles(array_map('intval', $roleIds));
 
