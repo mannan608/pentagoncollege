@@ -8,9 +8,6 @@ use Illuminate\Support\Str;
 
 trait HandlesFiles
 {
-    /**
-     * Upload single file
-     */
     public function uploadFile(
         UploadedFile $file,
         string $directory,
@@ -18,11 +15,9 @@ trait HandlesFiles
         ?string $filename = null
     ): string {
 
-        $extension = $file->getClientOriginalExtension();
-
         $name = $filename
-            ? "{$filename}.{$extension}"
-            : Str::uuid().".{$extension}";
+            ? $filename.'.'.$file->extension()
+            : Str::ulid().'.'.$file->extension();
 
         return $file->storeAs(
             $directory,
@@ -31,9 +26,6 @@ trait HandlesFiles
         );
     }
 
-    /**
-     * Upload multiple files
-     */
     public function uploadFiles(
         array $files,
         string $directory,
@@ -44,40 +36,30 @@ trait HandlesFiles
 
         foreach ($files as $file) {
 
+            if (!$file instanceof UploadedFile) {
+                continue;
+            }
+
             $paths[] = $this->uploadFile(
                 $file,
                 $directory,
                 $disk
             );
-
         }
 
         return $paths;
     }
 
-    /**
-     * Delete file
-     */
     public function deleteFile(
         ?string $path,
         string $disk = 'public'
     ): bool {
 
-        if (!$path) {
-            return false;
-        }
-
-        if (!Storage::disk($disk)->exists($path)) {
-            return false;
-        }
-
-        return Storage::disk($disk)
-            ->delete($path);
+        return $path
+            ? Storage::disk($disk)->delete($path)
+            : false;
     }
 
-    /**
-     * Delete multiple files
-     */
     public function deleteFiles(
         array $paths,
         string $disk = 'public'
@@ -88,9 +70,6 @@ trait HandlesFiles
         }
     }
 
-    /**
-     * Replace file
-     */
     public function replaceFile(
         ?UploadedFile $newFile,
         ?string $oldPath,
@@ -102,10 +81,7 @@ trait HandlesFiles
             return $oldPath;
         }
 
-        $this->deleteFile(
-            $oldPath,
-            $disk
-        );
+        $this->deleteFile($oldPath, $disk);
 
         return $this->uploadFile(
             $newFile,
@@ -114,63 +90,14 @@ trait HandlesFiles
         );
     }
 
-    /**
-     * File URL
-     */
     public function fileUrl(
         ?string $path,
         string $disk = 'public',
         ?string $fallback = null
     ): ?string {
 
-        if (!$path) {
-            return $fallback;
-        }
-
-        if (!Storage::disk($disk)->exists($path)) {
-            return $fallback;
-        }
-
-        return Storage::disk($disk)
-            ->url($path);
-    }
-
-    /**
-     * Detect file type
-     */
-    public function getFileType(string $path): string
-    {
-        $extension = strtolower(
-            pathinfo($path, PATHINFO_EXTENSION)
-        );
-
-        return match (true) {
-
-            in_array($extension, [
-                'jpg',
-                'jpeg',
-                'png',
-                'gif',
-                'svg',
-                'webp'
-            ]) => 'image',
-
-            in_array($extension, [
-                'mp4',
-                'avi',
-                'mov',
-                'mkv',
-                'webm'
-            ]) => 'video',
-
-            in_array($extension, [
-                'mp3',
-                'wav',
-                'ogg',
-                'm4a'
-            ]) => 'audio',
-
-            default => 'document'
-        };
+        return $path
+            ? Storage::disk($disk)->url($path)
+            : $fallback;
     }
 }

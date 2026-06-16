@@ -10,13 +10,13 @@ trait RouteDiscoveryTrait
      * Routes to exclude.
      */
     private array $excludedRoutes = [
-        'courses.apply',
-        'download.brochure',
+        'admin.*',
         'sanctum.*',
         'ignition.*',
         'login',
         'login.submit',
         'logout',
+        'register',
         'role.*',
         'password.*',
         'storage.local*',

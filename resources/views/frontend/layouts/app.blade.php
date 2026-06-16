@@ -93,7 +93,7 @@
     
     @include('frontend.layouts.navbar')
 
-    <main class="flex-grow">
+    <main class="grow">
        <div class="pt-22 md:pt-24 pb-12">
          @yield('content')
        </div>
@@ -102,5 +102,6 @@
     @include('frontend.layouts.footer')
 
     @stack('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 </body>
 </html>

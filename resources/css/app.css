@@ -4,12 +4,14 @@
 @import 'swiper/css/pagination';
 @import 'swiper/css/navigation';
 @import 'tailwindcss';
+@plugin "flowbite/plugin";
 
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@source "../../node_modules/flowbite";
 
 
 @custom-variant dark (&:is(.dark *));
@@ -63,6 +65,10 @@
 --color-brand-800: #115e59;
 --color-brand-900: #134e4a;
 --color-brand-950: #042f2e;
+
+/* --#182F5A */
+--color-secondary-500: #182F5A;
+
 
 
   --color-blue-light-25: #f5fbff;

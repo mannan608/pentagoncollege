@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Frontend\BlogController;
-use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\EventController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\SEO\Controllers\SitemapController;
