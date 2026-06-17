@@ -35,8 +35,8 @@
                             <x-form.input-text name="discount_percentage" label="Discount Percentage" value="{{ old('discount_percentage') }}"  placeholder="Enter Discount Percentage..." />
                         </div>
 
-                       <x-form.file-uploader name="thumbnail" label="Thumbnail" />
-                        <x-form.file-uploader name="course_material" label="Course Material" />
+                        <x-form.file-uploader name="thumbnail" label="Thumbnail" accept="image/*" />
+                        <x-form.file-uploader name="course_material" label="Course Material" accept="pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar" />
 
                         <x-form.textarea-input name="overview" label="Overview" rows="5"
                             placeholder="Enter Course overview..." :value="old('overview')" />

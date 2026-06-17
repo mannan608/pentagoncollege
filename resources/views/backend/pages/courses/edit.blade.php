@@ -37,27 +37,19 @@
                             <x-form.input-text name="discount_percentage" label="Discount Percentage" value="{{ old('discount_percentage', $course->discount_percentage) }}"  placeholder="Enter Discount Percentage..." />
                         </div>
 
-                        <x-form.select-input name="status" label="Status" :options="[
-                            'active' => 'Active',
-                            'inactive' => 'Inactive',
-                        ]" :value="old('status', $course->status)" />
+                        <x-form.file-uploader 
+                            name="thumbnail" 
+                            label="Thumbnail" 
+                            accept="image/*" 
+                            :existing="$course->thumbnail ? asset(\Illuminate\Support\Facades\Storage::url($course->thumbnail)) : null" 
+                        />
 
-                        @if ($course->thumbnail)
-                            <div class="mb-4">
-                                <img src="{{ asset($course->thumbnail) }}"
-                                    class="w-32 h-32 object-contain rounded border border-gray-200" alt="thumbnail">
-                            </div>
-                        @endif
-                        <x-form.dropzone name="thumbnail" label="Update Thumbnail" />
-
-                        @if ($course->course_material)
-                            <div class="mb-4">
-                                <a href="{{ asset($course->course_material) }}" target="_blank" class="text-brand-600 hover:underline">
-                                    View Current Material
-                                </a>
-                            </div>
-                        @endif
-                        <x-form.dropzone name="course_material" label="Update Course Material" />
+                        <x-form.file-uploader 
+                            name="course_material" 
+                            label="Course Material" 
+                            accept="pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar" 
+                            :existing="$course->course_material ? asset(\Illuminate\Support\Facades\Storage::url($course->course_material)) : null" 
+                        />
 
                         <x-form.textarea-input name="overview" label="Overview" rows="5"
                             placeholder="Enter Course overview..." :value="old('overview', $course->overview)" />

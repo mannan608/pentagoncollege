@@ -47,6 +47,12 @@ class UpdateCourseRequest extends FormRequest
                 'integer',
                 'between:0,100',
             ],
+
+            'status' => [
+                'nullable',
+                'in:active,inactive',
+            ],
+
             'thumbnail' => [
                 'nullable',
                 'image',

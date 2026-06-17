@@ -45,6 +45,11 @@ class StoreCourseRequest extends FormRequest
                 'between:0,100',
             ],
 
+            'status' => [
+                'nullable',
+                'in:active,inactive',
+            ],
+
             'thumbnail' => [
                 'nullable',
                 'image',
@@ -85,6 +90,7 @@ class StoreCourseRequest extends FormRequest
         $this->merge([
             'price' => $this->price ?: 0,
             'discount_percentage' => $this->discount_percentage ?: 0,
+            'status' => $this->status ?: 'active',
         ]);
     }
 

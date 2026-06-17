@@ -4,12 +4,15 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Course;
 use App\Repositories\Interfaces\CourseRepositoryInterface;
+use App\Traits\HandlesFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class CourseRepository implements CourseRepositoryInterface
 {
+    use HandlesFiles;
+
     public function paginate(int $perPage = 15)
     {
         return Course::latest()
@@ -21,7 +24,10 @@ class CourseRepository implements CourseRepositoryInterface
         return Course::findOrFail($id);
     }
 
-    public function create(array $data,Request $request ): Course {
+    public function create(
+        array $data,
+        Request $request
+    ): Course {
 
         return DB::transaction(function () use ($data, $request) {
 
@@ -30,18 +36,19 @@ class CourseRepository implements CourseRepositoryInterface
             );
             
             $data['created_by'] = auth()->id();
+            $data['status'] = $data['status'] ?? 'active';
 
             if ($request->hasFile('thumbnail')) {
                 $data['thumbnail'] = $this->uploadFile(
                     $request->file('thumbnail'),
-                    'uploads/courses/thumbnails'
+                    'courses/thumbnails'
                 );
             }
 
             if ($request->hasFile('course_material')) {
                 $data['course_material'] = $this->uploadFile(
                     $request->file('course_material'),
-                    'uploads/courses/materials'
+                    'courses/materials'
                 );
             }
 
@@ -70,16 +77,18 @@ class CourseRepository implements CourseRepositoryInterface
             $data['updated_by'] = auth()->id();
 
             if ($request->hasFile('thumbnail')) {
+                $this->deleteFile($course->thumbnail);
                 $data['thumbnail'] = $this->uploadFile(
                     $request->file('thumbnail'),
-                    'uploads/courses/thumbnails'
+                    'courses/thumbnails'
                 );
             }
 
             if ($request->hasFile('course_material')) {
+                $this->deleteFile($course->course_material);
                 $data['course_material'] = $this->uploadFile(
                     $request->file('course_material'),
-                    'uploads/courses/materials'
+                    'courses/materials'
                 );
             }
 
@@ -90,6 +99,8 @@ class CourseRepository implements CourseRepositoryInterface
     }
 
     public function delete(Course $course): bool {
+        $this->deleteFile($course->thumbnail);
+        $this->deleteFile($course->course_material);
         return $course->delete();
     }
 
@@ -115,30 +126,5 @@ class CourseRepository implements CourseRepositoryInterface
         return $count
             ? "{$slug}-" . ($count + 1)
             : $slug;
-    }
-
-    private function uploadFile(
-        $file,
-        string $path
-    ): string {
-
-        $destinationPath = public_path($path);
-
-        if (! file_exists($destinationPath)) {
-            mkdir($destinationPath, 0775, true);
-        }
-
-        $fileName = time()
-            . '_'
-            . uniqid()
-            . '.'
-            . $file->getClientOriginalExtension();
-
-        $file->move(
-            $destinationPath,
-            $fileName
-        );
-
-        return $path . '/' . $fileName;
     }
 }
