@@ -18,4 +18,6 @@ interface CourseRepositoryInterface
     public function delete(
         Course $course
     ): bool;
+
+    public function getAll();
 }

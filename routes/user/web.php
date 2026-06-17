@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\EventController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\SEO\Controllers\SitemapController;
@@ -26,3 +27,10 @@ Route::get('/events/{slug}', [EventController::class, 'show'])
     ->name('event-details');
 
 Route::get('/register', [FrontendController::class, 'registration'])->name('register');
+Route::get('/inquiry-us', [ContactController::class, 'create'])
+    ->name('contact.create');
+
+Route::post('/inquiry-us', [ContactController::class, 'store'])
+    ->name('contact.store');
+
+

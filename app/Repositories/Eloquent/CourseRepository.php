@@ -13,6 +13,13 @@ class CourseRepository implements CourseRepositoryInterface
 {
     use HandlesFiles;
 
+  public function getAll()
+    {
+         return Course::select('id', 'name')
+        ->orderBy('name')
+        ->get();
+    }
+
     public function paginate(int $perPage = 15)
     {
         return Course::latest()

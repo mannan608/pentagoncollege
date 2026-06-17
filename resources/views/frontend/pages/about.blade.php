@@ -131,7 +131,7 @@
     </section>
 
      <section class=" py-8 md:py-12 lg:py-14 bg-white ">
-       <x-frontend.consultation-form />
+       <x-frontend.consultation-form :courses="$courses" />
     </section>
     <section class="pt-8 md:pt-12 lg:pt-14">
         <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">

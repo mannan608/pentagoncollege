@@ -40,4 +40,11 @@ class FrontendController extends Controller
     {
         return view('frontend.pages.course-details', ['title' => 'Course Details']);
     }
+
+    public function contactForm(){
+
+    $courses = $this->getCourses();
+
+        return view('components.frontend.consultation-form', compact('courses'));
+    }
 }
