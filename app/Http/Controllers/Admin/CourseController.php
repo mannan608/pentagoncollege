@@ -1,68 +1,99 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Str;
-use App\Http\Resources\CourseResource;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\Course;
 use App\Repositories\Interfaces\CourseRepositoryInterface;
+use App\Traits\HandlesFiles;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CourseController extends Controller
 {
     public function __construct(
-        protected CourseRepositoryInterface $courseRepository
+        private readonly CourseRepositoryInterface $courses
     ) {}
 
-    public function index(Request $request)
+
+    public function index(Request $request): View
     {
-         $request->user()->can('course.list') || abort(403);
+        $request->user()->can('course.list') || abort(403);
 
-        $courses = $this->courseRepository->paginate();
-
-        return CourseResource::collection($courses);
-    }
-
-    public function store(StoreCourseRequest $request)
-    {
-        $data = $request->validated();
-
-        $data['slug'] = Str::slug($data['title']);
-        $data['created_by'] = auth()->id();
-
-        $course = $this->courseRepository->create($data);
-
-        return new CourseResource($course);
-    }
-
-    public function show(int $id)
-    {
-        return new CourseResource(
-            $this->courseRepository->find($id)
-        );
-    }
-
-    public function update(
-        UpdateCourseRequest $request,
-        int $id
-    ) {
-        $data = $request->validated();
-
-        $data['slug'] = Str::slug($data['title']);
-        $data['updated_by'] = auth()->id();
-
-        $course = $this->courseRepository->update($id, $data);
-
-        return new CourseResource($course);
-    }
-
-    public function destroy(int $id)
-    {
-        $this->courseRepository->delete($id);
-
-        return response()->json([
-            'message' => 'Course deleted successfully'
+        return view('backend.pages.courses.index', [
+            'courses' => $this->courses->paginate(),
+            'title' => 'Courses',
         ]);
+    }
+
+    public function create(Request $request): View
+    {
+        $request->user()->can('course.create') || abort(403);
+
+        return view('backend.pages.courses.create', [
+            'course' => null,
+            'title' => 'Create Course',
+        ]);
+    }
+
+    public function store(StoreCourseRequest $request): RedirectResponse
+    {
+        $this->courses->create(
+            $request->validated(),
+            $request
+        );
+
+        return redirect()
+            ->route('role.courses.index', [
+                'role' => $request->route('role')
+            ])
+            ->with('success', 'Course created successfully.');
+    }
+
+    public function show(Request $request,Course $course): View {
+        $request->user()->can('course.view') || abort(403);
+
+        return view('backend.pages.courses.show', [
+            'course' => $course,
+            'title' => 'Course Details',
+        ]);
+    }
+
+    public function edit( Request $request, string $role, Course $course): View {
+        $request->user()->can('course.edit') || abort(403);
+
+        return view('backend.pages.courses.edit', [
+            'course' => $course,
+            'title' => 'Edit Course',
+        ]);
+    }
+
+    public function update(UpdateCourseRequest $request,string $role,Course $course ): RedirectResponse {
+        $this->courses->update(
+            $course,
+            $request->validated(),
+            $request
+        );
+
+        return redirect()
+            ->route('role.courses.index', [
+                'role' => $request->route('role')
+            ])
+            ->with('success', 'Course updated successfully.');
+    }
+
+    public function destroy(Request $request, string $role,Course $course): RedirectResponse {
+        $request->user()->can('course.delete') || abort(403);
+
+        $this->courses->delete($course);
+
+        return redirect()
+            ->route('role.courses.index', [
+                'role' => $role
+            ])
+            ->with('success', 'Course deleted successfully.');
     }
 }

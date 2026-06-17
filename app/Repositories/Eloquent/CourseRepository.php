@@ -21,14 +21,29 @@ class CourseRepository implements CourseRepositoryInterface
         return Course::findOrFail($id);
     }
 
-    public function create(
-        array $data,
-        Request $request
-    ): Course {
+    public function create(array $data,Request $request ): Course {
 
         return DB::transaction(function () use ($data, $request) {
 
-          
+            $data['slug'] = $this->generateUniqueSlug(
+                $data['name']
+            );
+            
+            $data['created_by'] = auth()->id();
+
+            if ($request->hasFile('thumbnail')) {
+                $data['thumbnail'] = $this->uploadFile(
+                    $request->file('thumbnail'),
+                    'uploads/courses/thumbnails'
+                );
+            }
+
+            if ($request->hasFile('course_material')) {
+                $data['course_material'] = $this->uploadFile(
+                    $request->file('course_material'),
+                    'uploads/courses/materials'
+                );
+            }
 
             return Course::create($data);
         });
@@ -51,18 +66,20 @@ class CourseRepository implements CourseRepositoryInterface
                     $course->id
                 );
             }
+            
+            $data['updated_by'] = auth()->id();
 
-            if ($request->hasFile('logo')) {
-                $data['logo'] = $this->uploadFile(
-                    $request->file('logo'),
-                    'uploads/universities/logos'
+            if ($request->hasFile('thumbnail')) {
+                $data['thumbnail'] = $this->uploadFile(
+                    $request->file('thumbnail'),
+                    'uploads/courses/thumbnails'
                 );
             }
 
-            if ($request->hasFile('banner')) {
-                $data['banner'] = $this->uploadFile(
-                    $request->file('banner'),
-                    'uploads/universities/banners'
+            if ($request->hasFile('course_material')) {
+                $data['course_material'] = $this->uploadFile(
+                    $request->file('course_material'),
+                    'uploads/courses/materials'
                 );
             }
 
@@ -100,5 +117,28 @@ class CourseRepository implements CourseRepositoryInterface
             : $slug;
     }
 
-  
+    private function uploadFile(
+        $file,
+        string $path
+    ): string {
+
+        $destinationPath = public_path($path);
+
+        if (! file_exists($destinationPath)) {
+            mkdir($destinationPath, 0775, true);
+        }
+
+        $fileName = time()
+            . '_'
+            . uniqid()
+            . '.'
+            . $file->getClientOriginalExtension();
+
+        $file->move(
+            $destinationPath,
+            $fileName
+        );
+
+        return $path . '/' . $fileName;
+    }
 }

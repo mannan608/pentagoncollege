@@ -11,16 +11,19 @@ class CourseResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
+            'name' => $this->name,
+            'code' => $this->code,
+            'cricos' => $this->cricos,
             'slug' => $this->slug,
             'price' => $this->price,
             'discount_percentage' => $this->discount_percentage,
             'final_price' => $this->final_price,
             'thumbnail' => $this->thumbnail,
+            'overview' => $this->overview,
+            'entry_requirements' => $this->entry_requirements,
             'description' => $this->description,
-            'category' => $this->category?->name,
-            'is_active' => $this->is_active,
-            'is_featured' => $this->is_featured,
+            'course_material' => $this->course_material,
+            'status' => $this->status,
             'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
         ];
     }

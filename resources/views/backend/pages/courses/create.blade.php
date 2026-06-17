@@ -1,7 +1,7 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    <form action="{{ role_route('role.universities.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ role_route('role.courses.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
 
@@ -22,33 +22,36 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             {{-- Name --}}
-                            <x-form.input-text name="name" label="Course Name" value="" placeholder="Enter Course Name..." />
+                            <x-form.input-text name="name" label="Course Name" value="{{ old('name') }}" placeholder="Enter Course Name..." />
 
                             {{-- Code --}}
-                            <x-form.input-text name="code" label="Course Code" value=""  placeholder="Enter Course Code..." />
+                            <x-form.input-text name="code" label="Course Code" value="{{ old('code') }}"  placeholder="Enter Course Code..." />
 
                             {{-- Cricos --}}
-                            <x-form.input-text name="cricos" label="Cricos No" value=""  placeholder="Enter Cricos No..." />
+                            <x-form.input-text name="cricos" label="Cricos No" value="{{ old('cricos') }}"  placeholder="Enter Cricos No..." />
 
                             {{-- Price --}}
-                            <x-form.input-text name="price" label="Price" value=""  placeholder="Enter Price..." />
-                            <x-form.input-text name="discount_percentage" label="Discount Price" value=""  placeholder="Enter Discount Price..." />
-                            <x-form.select-input name="status" label="Status" :options="[
-                                'category1' => 'Category1',
-                                'category2' => 'category2',
-                                'category3' => 'Suspended3',
-                            ]" />
-                            <x-form.file-uploader name="thumbnail" label="Image" value="" accept="image/*" />
-                            <x-form.file-uploader name="course_material" label="Course Material" value="" />
-
-                             <x-form.textarea-input name="overview" label="Overview" rows="5"
-                            placeholder="Enter Course overview..." />
-
-                                <x-form.textarea-input name="entry_requirements" label="Entry Requirements" rows="5"
-                            placeholder="Enter Entry Requirements..." />
-                                <x-form.textarea-input name="description" label="Description" rows="5"
-                            placeholder="Enter Course description..." />
+                            <x-form.input-text name="price" label="Price" value="{{ old('price') }}"  placeholder="Enter Price..." />
+                            <x-form.input-text name="discount_percentage" label="Discount Percentage" value="{{ old('discount_percentage') }}"  placeholder="Enter Discount Percentage..." />
                         </div>
+
+                        <x-form.select-input name="status" label="Status" :options="[
+                            'active' => 'Active',
+                            'inactive' => 'Inactive',
+                        ]" />
+
+                        <x-form.dropzone name="thumbnail" label="Thumbnail" />
+
+                        <x-form.dropzone name="course_material" label="Course Material" />
+
+                        <x-form.textarea-input name="overview" label="Overview" rows="5"
+                            placeholder="Enter Course overview..." :value="old('overview')" />
+
+                        <x-form.textarea-input name="entry_requirements" label="Entry Requirements" rows="5"
+                            placeholder="Enter Entry Requirements..." :value="old('entry_requirements')" />
+                            
+                        <x-form.textarea-input name="description" label="Description" rows="5"
+                            placeholder="Enter Course description..." :value="old('description')" />
                     </div>
 
                 </div>

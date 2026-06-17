@@ -22,7 +22,7 @@
                 <p class="text-sm text-gray-500 dark:text-gray-400">Manage universities, logos, and banners.
                 </p>
             </div>
-            <a href="{{ role_route('role.course.create') }}"
+            <a href="{{ role_route('role.courses.create') }}"
                 class="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-600 transition-colors">
                 + Add New Course
             </a>

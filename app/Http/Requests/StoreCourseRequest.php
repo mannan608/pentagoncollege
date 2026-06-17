@@ -32,14 +32,6 @@ class StoreCourseRequest extends FormRequest
                 'max:100',
             ],
 
-            'slug' => [
-                'required',
-                'string',
-                'max:255',
-                'alpha_dash',
-                'unique:courses,slug',
-            ],
-
             'price' => [
                 'nullable',
                 'numeric',
@@ -84,7 +76,6 @@ class StoreCourseRequest extends FormRequest
 
             'category_id' => [
                 'nullable',
-                'exists:categories,id',
             ],
         ];
     }

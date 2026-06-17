@@ -35,14 +35,6 @@ class UpdateCourseRequest extends FormRequest
                 'max:100',
             ],
 
-            'slug' => [
-                'required',
-                'string',
-                'max:255',
-                'alpha_dash',
-                Rule::unique('courses', 'slug')->ignore($courseId),
-            ],
-
             'price' => [
                 'nullable',
                 'numeric',
@@ -55,7 +47,6 @@ class UpdateCourseRequest extends FormRequest
                 'integer',
                 'between:0,100',
             ],
-
             'thumbnail' => [
                 'nullable',
                 'image',
@@ -87,7 +78,6 @@ class UpdateCourseRequest extends FormRequest
 
             'category_id' => [
                 'nullable',
-                'exists:categories,id',
             ],
         ];
     }

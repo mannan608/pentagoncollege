@@ -29,14 +29,8 @@ class Course extends Model
 
     protected $casts = [
         'price' => 'decimal:2',
-        'is_active' => 'boolean',
-        'is_featured' => 'boolean',
+        'discount_percentage' => 'integer',
     ];
-
-    // public function category()
-    // {
-    //     return $this->belongsTo(Category::class);
-    // }
 
     public function creator()
     {
