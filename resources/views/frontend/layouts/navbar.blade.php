@@ -45,9 +45,9 @@
                         Home
                     </a>
 
-                    <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
+                    <a href="#" id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
                         class="flex items-center relative font-normal transition-all duration-300
-        {{ request()->routeIs('about') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+        {{ request()->routeIs('') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
         after:absolute after:left-0 after:-bottom-1.5
         after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300"
                         type="button">
@@ -57,7 +57,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m19 9-7 7-7-7" />
                         </svg>
-                    </button>
+                    </a>
 
                     <!-- Dropdown menu -->
                     <div id="dropdownHover" class="z-10 hidden bg-white rounded-md shadow-lg max-w-150">
@@ -91,9 +91,9 @@
                         About
                     </a>
                     {{-- student --}}
-                    <a href="{{ route('contact') }}"
+                    <a href="{{ route('student-information') }}"
                         class="relative font-normal transition-all duration-300
-        {{ request()->routeIs('contact') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+        {{ request()->routeIs('student-information') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
         after:absolute after:left-0 after:-bottom-1.5
         after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
 
@@ -166,12 +166,12 @@
                 <a href="{{ route('home') }}"
                     class="{{ request()->routeIs('home') ? 'text-brand-600 font-medium' : 'text-white' }}">Home</a>
                 <a href="{{ route('about') }}"
-                    class="{{ request()->routeIs('about') ? 'text-brand-600 font-medium' : 'text-white' }}">Our
+                    class="{{ request()->routeIs('#') ? 'text-brand-600 font-medium' : 'text-white' }}">Our
                     Courses</a>
                 <a href="{{ route('about') }}"
                     class="{{ request()->routeIs('about') ? 'text-brand-600 font-medium' : 'text-white' }}">About</a>
                 <a href="{{ route('about') }}"
-                    class="{{ request()->routeIs('about') ? 'text-brand-600 font-medium' : 'text-white' }}">Student
+                    class="{{ request()->routeIs('student-information') ? 'text-brand-600 font-medium' : 'text-white' }}">Student
                     Information</a>
                 <a href="{{ route('contact') }}"
                     class="{{ request()->routeIs('contact') ? 'text-brand-600 font-medium' : 'text-white' }}">Contact</a>

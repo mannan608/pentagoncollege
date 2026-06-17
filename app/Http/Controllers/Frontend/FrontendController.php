@@ -27,8 +27,17 @@ class FrontendController extends Controller
     {
         return view('frontend.pages.contact', ['title' => 'Contact Us']);
     }
+      public function studentInformation()
+    {
+        return view('frontend.pages.student-information', ['title' => 'Student Information']);
+    }
     public function registration()
     {
         return view('frontend.pages.register', ['title' => 'Register']);
+    }
+
+    public function courseDetails()
+    {
+        return view('frontend.pages.course-details', ['title' => 'Course Details']);
     }
 }

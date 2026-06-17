@@ -15,7 +15,7 @@
                         <div class="flex flex-col sm:flex-row gap-3">
 
                             <input type="email" name="email" placeholder="Enter Email Address..." required
-                                class="w-full sm:min-w-[320px] lg:min-w-5
+                                class="w-full sm:min-w-[320px] lg:min-w-100
                         px-4 py-3
                         bg-white
                         border border-white/20
