@@ -35,14 +35,8 @@
                             <x-form.input-text name="discount_percentage" label="Discount Percentage" value="{{ old('discount_percentage') }}"  placeholder="Enter Discount Percentage..." />
                         </div>
 
-                        <x-form.select-input name="status" label="Status" :options="[
-                            'active' => 'Active',
-                            'inactive' => 'Inactive',
-                        ]" />
-
-                        <x-form.dropzone name="thumbnail" label="Thumbnail" />
-
-                        <x-form.dropzone name="course_material" label="Course Material" />
+                       <x-form.file-uploader name="thumbnail" label="Thumbnail" />
+                        <x-form.file-uploader name="course_material" label="Course Material" />
 
                         <x-form.textarea-input name="overview" label="Overview" rows="5"
                             placeholder="Enter Course overview..." :value="old('overview')" />
