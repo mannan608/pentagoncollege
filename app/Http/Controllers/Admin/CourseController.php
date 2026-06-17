@@ -7,9 +7,7 @@ use App\Http\Resources\CourseResource;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Repositories\Interfaces\CourseRepositoryInterface;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class CourseController extends Controller
 {
@@ -17,21 +15,20 @@ class CourseController extends Controller
         protected CourseRepositoryInterface $courseRepository
     ) {}
 
-   public function index(Request $request): View
+    public function index(Request $request)
     {
          $request->user()->can('course.list') || abort(403);
 
-        return view('backend.pages.courses.index', [
-            'courses' => $this->courseRepository->paginate(),
-            'name' => 'Courses',
-        ])
+        $courses = $this->courseRepository->paginate();
+
+        return CourseResource::collection($courses);
     }
 
     public function store(StoreCourseRequest $request)
     {
         $data = $request->validated();
 
-        $data['slug'] = Str::slug($data['name']);
+        $data['slug'] = Str::slug($data['title']);
         $data['created_by'] = auth()->id();
 
         $course = $this->courseRepository->create($data);

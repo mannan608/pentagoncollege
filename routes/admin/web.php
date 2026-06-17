@@ -53,6 +53,6 @@ Route::prefix('{role}')
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', ProviderController::class);
-        Route::resource('courses', CourseController::class);
+        Route::resource('course', CourseController::class);
 
     });
