@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\CourseController;
 use App\SEO\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,4 +53,6 @@ Route::prefix('{role}')
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('providers', ProviderController::class);
+        Route::resource('courses', CourseController::class);
+
     });
