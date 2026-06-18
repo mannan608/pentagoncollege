@@ -7,7 +7,6 @@
  <form action="{{ route('contact.store') }}" method="POST"
      class="border border-gray-200 p-6 w-full lg:max-w-3xl mx-auto rounded-lg">
      @csrf
-     <input type="hidden" name="form_type" value="consultation">
      <div class="flex flex-col gap-4">
      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
          <x-form.input-text name="name" label="Full Name" value="" placeholder="Enter Full Name..." />
@@ -29,7 +28,7 @@
  </form>
 </div>
 
- @if ($errors->any() && old('form_type') === 'consultation')
+
 <script>
 window.addEventListener('load', () => {
 
@@ -47,32 +46,20 @@ window.addEventListener('load', () => {
     firstErrorField?.focus();
 });
 </script>
-@endif
 
 
- <div
-    x-data="{ showModal: {{ session('success_form') === 'consultation' ? 'true' : 'false' }} }">
+<div x-data="{ showModal: {{ session('success') ? 'true' : 'false' }} }">
 
-    @if(session('success') && session('success_form') === 'consultation')
-        <div
-            x-show="showModal"
-            x-transition
-            class="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+    @if (session('success'))
+        <div x-show="showModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
             style="display:none">
 
-            <div
-                @click.away="showModal = false"
-                class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center shadow-xl">
+            <div @click.away="showModal = false" class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center shadow-xl">
 
                 <div class="mb-4">
-                    <svg class="w-16 h-16 mx-auto text-green-500"
-                        fill="none"
-                        stroke="currentColor"
+                    <svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
-                        <path stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M5 13l4 4L19 7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                 </div>
 
@@ -84,9 +71,7 @@ window.addEventListener('load', () => {
                     {{ session('success') }}
                 </p>
 
-                <button
-                    @click="showModal = false"
-                    class="bg-brand-600 text-white px-6 py-2 rounded-lg">
+                <button @click="showModal = false" class="bg-brand-600 text-white px-6 py-2 rounded-lg">
                     Close
                 </button>
             </div>

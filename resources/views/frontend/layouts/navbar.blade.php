@@ -1,10 +1,3 @@
-<div
-    x-data="{
-        showModal: {{ old('form_type') === 'navbar_enquiry' && $errors->any() ? 'true' : 'false' }},
-        showSuccessModal: {{ session('success_form') === 'navbar_enquiry' ? 'true' : 'false' }}
-    }"
-    @open-apply-modal.window="showModal = true">
-
     <header
         class="fixed top-0 left-0 w-full z-50 border-b bg-secondary-500 backdrop-blur-md border-white/10  dark:border-gray-800 dark:bg-gray-900/95">
 
@@ -154,10 +147,10 @@
                         </svg>
                     </button> --}}
                     <!-- Right Side -->
-                    <button type="button" data-open-apply-modal
+                    <a href="{{ route('contact') }}"
                         class=" text-sm   bg-brand-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-600 transition">
                         ENQUIRY NOW
-                    </button>
+                </a>
 
                 </div>
 
@@ -207,36 +200,6 @@
             </div>
         </div>
     </header>
-
-    <x-ui.modal x-model="showModal" class="max-w-2xl p-6">
-        <x-frontend.get-in-touch form-type="navbar_enquiry" :show-success-modal="false" />
-    </x-ui.modal>
-
-    <x-ui.modal x-model="showSuccessModal" class="max-w-md p-8">
-        <div class="text-center">
-            <div class="mb-4">
-                <svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-            </div>
-
-            <h3 class="text-xl font-bold text-gray-900 mb-2">
-                Success!
-            </h3>
-
-            <p class="text-gray-600 mb-6">
-                {{ session('success') }}
-            </p>
-
-            <button @click="showSuccessModal = false" class="bg-brand-600 text-white px-6 py-2 rounded-lg">
-                Close
-            </button>
-        </div>
-    </x-ui.modal>
-</div>
-
-
 <script>
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -258,14 +221,4 @@
 
     });
 
-    document.addEventListener('click', (event) => {
-        const trigger = event.target.closest('[data-open-apply-modal]');
-
-        if (!trigger) {
-            return;
-        }
-
-        event.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-apply-modal'));
-    });
 </script>
