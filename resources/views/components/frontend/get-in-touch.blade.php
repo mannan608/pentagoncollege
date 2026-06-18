@@ -1,10 +1,16 @@
+@props([
+    'formType' => 'get_in_touch',
+    'showSuccessModal' => true,
+])
+
 <div class="">
 
     <div class="md:mb-4 mb-3 lg:mb-6">
         <h1 class="text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">Any Questions? Ask Us!!</h1>
     </div>
-    <form action="{{ route('contact.store') }}" method="POST">
+    <form id="get-in-touch-form-{{ $formType }}" action="{{ route('contact.store') }}" method="POST">
         @csrf
+        <input type="hidden" name="form_type" value="{{ $formType }}">
         <div class="flex flex-col gap-4">
             <x-form.input-text name="name" label="Full Name" value="" placeholder="Enter Full Name..." />
             <x-form.input-text name="email" label="Email" type="email" value=""
@@ -22,12 +28,12 @@
     </form>
 </div>
 
-@if ($errors->any())
+@if ($errors->any() && old('form_type') === $formType)
     <script>
         window.addEventListener('load', () => {
 
             document
-                .getElementById('get-in-touch-form')
+                .getElementById('get-in-touch-form-{{ $formType }}')
                 ?.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
@@ -43,9 +49,9 @@
 @endif
 
 
-<div x-data="{ showModal: {{ session('success') ? 'true' : 'false' }} }">
+<div x-data="{ showModal: {{ $showSuccessModal && session('success_form') === $formType ? 'true' : 'false' }} }">
 
-    @if (session('success'))
+    @if ($showSuccessModal && session('success') && session('success_form') === $formType)
         <div x-show="showModal" x-transition class="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
             style="display:none">
 

@@ -7,6 +7,7 @@
  <form action="{{ route('contact.store') }}" method="POST"
      class="border border-gray-200 p-6 w-full lg:max-w-3xl mx-auto rounded-lg">
      @csrf
+     <input type="hidden" name="form_type" value="consultation">
      <div class="flex flex-col gap-4">
      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
          <x-form.input-text name="name" label="Full Name" value="" placeholder="Enter Full Name..." />
@@ -28,7 +29,7 @@
  </form>
 </div>
 
- @if ($errors->any())
+ @if ($errors->any() && old('form_type') === 'consultation')
 <script>
 window.addEventListener('load', () => {
 
@@ -50,9 +51,9 @@ window.addEventListener('load', () => {
 
 
  <div
-    x-data="{ showModal: {{ session('success') ? 'true' : 'false' }} }">
+    x-data="{ showModal: {{ session('success_form') === 'consultation' ? 'true' : 'false' }} }">
 
-    @if(session('success'))
+    @if(session('success') && session('success_form') === 'consultation')
         <div
             x-show="showModal"
             x-transition

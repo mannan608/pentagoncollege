@@ -11,11 +11,9 @@ use Illuminate\View\View;
 
 class ContactController extends Controller
 {
-
     public function __construct(
         private readonly CourseRepositoryInterface $courses
     ) {}
-
 
     public function index(Request $request): View
     {
@@ -23,7 +21,7 @@ class ContactController extends Controller
 
         $contacts = Contacts::query()
             ->with([
-                'course:id,name'
+                'course:id,name',
             ])
             ->select([
                 'id',
@@ -31,7 +29,7 @@ class ContactController extends Controller
                 'email',
                 'phone',
                 'message',
-                'course_id'
+                'course_id',
             ])
             ->latest()
             ->get();
@@ -42,7 +40,6 @@ class ContactController extends Controller
         );
     }
 
-
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -51,16 +48,21 @@ class ContactController extends Controller
             'phone' => ['required', 'string', 'max:50'],
             'message' => ['required', 'string'],
             'course_id' => ['nullable', 'exists:courses,id'],
+            'form_type' => ['nullable', 'string', 'in:navbar_enquiry,get_in_touch,consultation'],
         ]);
+
+        $formType = $data['form_type'] ?? 'get_in_touch';
+        unset($data['form_type']);
 
         Contacts::create($data);
 
         return redirect()
             ->back()
-            ->with('success', 'Your inquiry has been submitted successfully.');
+            ->with('success', 'Your inquiry has been submitted successfully.')
+            ->with('success_form', $formType);
     }
 
-   public function destroy(Request $request, string $role,Contacts $contact): RedirectResponse
+    public function destroy(Request $request, string $role, Contacts $contact): RedirectResponse
     {
         $request->user()->can('contact.delete') || abort(403);
         $contact->delete();
