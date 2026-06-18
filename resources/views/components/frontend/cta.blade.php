@@ -11,7 +11,8 @@
                     </div>
 
                     <!-- Form -->
-                    <form class="w-full lg:w-auto">
+                    <form class="w-full lg:w-auto"  action="{{ route('subscribe.store') }}" method="POST">
+                         @csrf
                         <div class="flex flex-col sm:flex-row gap-3">
 
                             <input type="email" name="email" placeholder="Enter Email Address..." required

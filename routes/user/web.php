@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\EventController;
@@ -31,5 +32,8 @@ Route::get('/register', [FrontendController::class, 'registration'])->name('regi
 
 Route::post('/inquiry-us', [ContactController::class, 'store'])
     ->name('contact.store');
+
+    Route::post('/subscribe', [SubscriberController::class, 'store'])
+    ->name('subscribe.store');
 
 

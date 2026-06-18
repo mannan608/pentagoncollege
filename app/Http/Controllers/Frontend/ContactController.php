@@ -13,7 +13,7 @@ class ContactController extends Controller
 {
     public function index(Request $request): View
     {
-        $request->user()->can('course.list') || abort(403);
+        $request->user()->can('contact.list') || abort(403);
 
         $contacts = Contacts::query()
             ->with([

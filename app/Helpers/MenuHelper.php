@@ -73,6 +73,12 @@ class MenuHelper
                 'route' => 'role.contacts.index',
                 'permission' => 'contact.list',
             ],
+             [
+                'name' => 'Subscriptions',
+                'icon' => 'university',
+                'route' => 'role.subscribers.index',
+                'permission' => 'subscriber.list',
+            ],
 
             
 
