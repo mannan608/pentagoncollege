@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Contacts;
 use App\Repositories\Interfaces\CourseRepositoryInterface;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ContactController extends Controller
 {
@@ -13,6 +15,32 @@ class ContactController extends Controller
     public function __construct(
         private readonly CourseRepositoryInterface $courses
     ) {}
+
+
+    public function index(Request $request): View
+    {
+        $request->user()->can('course.list') || abort(403);
+
+        $contacts = Contacts::query()
+            ->with([
+                'course:id,name'
+            ])
+            ->select([
+                'id',
+                'name',
+                'email',
+                'phone',
+                'message',
+                'course_id'
+            ])
+            ->latest()
+            ->get();
+
+        return view(
+            'backend.pages.contacts.index',
+            compact('contacts')
+        );
+    }
 
 
     public function store(Request $request)
@@ -30,5 +58,16 @@ class ContactController extends Controller
         return redirect()
             ->back()
             ->with('success', 'Your inquiry has been submitted successfully.');
+    }
+
+   public function destroy(Request $request, string $role,Contacts $contact): RedirectResponse
+    {
+        $request->user()->can('course.list') || abort(403);
+        $contact->delete();
+
+        return back()->with(
+            'success',
+            'Contact deleted successfully.'
+        );
     }
 }

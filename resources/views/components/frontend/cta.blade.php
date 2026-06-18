@@ -29,7 +29,7 @@
                             <button type="submit"
                                 class="whitespace-nowrap
                         bg-brand-600
-                        hover:bg-brand-700
+                        hover:bg-brand-600
                         text-white
                         px-6 py-3
                         rounded-lg

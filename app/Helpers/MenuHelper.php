@@ -67,6 +67,14 @@ class MenuHelper
                 'route' => 'role.courses.index',
                 'permission' => 'course.list',
             ],
+            [
+                'name' => 'Contacts',
+                'icon' => 'university',
+                'route' => 'role.contacts.index',
+                'permission' => 'contact.list',
+            ],
+
+            
 
             // [
             //     'name' => 'Reports',
