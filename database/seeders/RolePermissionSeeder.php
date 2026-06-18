@@ -91,6 +91,8 @@ class RolePermissionSeeder extends Seeder
 
             //contact
             'contact.list',
+            'contact.view',
+            'contact.delete',
         ];
 
         foreach ($permissions as $permission) {

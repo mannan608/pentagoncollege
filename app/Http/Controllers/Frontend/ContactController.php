@@ -62,7 +62,7 @@ class ContactController extends Controller
 
    public function destroy(Request $request, string $role,Contacts $contact): RedirectResponse
     {
-        $request->user()->can('course.list') || abort(403);
+        $request->user()->can('contact.delete') || abort(403);
         $contact->delete();
 
         return back()->with(

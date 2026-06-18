@@ -45,7 +45,8 @@
                         Home
                     </a>
 
-                    <a href="#" id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
+                    <a href="#" id="dropdownHoverButton" data-dropdown-toggle="dropdownHover"
+                        data-dropdown-trigger="hover"
                         class="flex items-center relative font-normal transition-all duration-300
         {{ request()->routeIs('') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
         after:absolute after:left-0 after:-bottom-1.5
@@ -208,6 +209,11 @@
 </div>
 </header>
 
+</div>
+
+<x-ui.modal x-model="showModal" class="max-w-2xl p-6">
+    <x-frontend.get-in-touch />
+</x-ui.modal>
 </div>
 
 
