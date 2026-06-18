@@ -111,7 +111,7 @@
                     </div>
 
                 </div>
-                <div class="">                   
+                <div class="border border-gray-200 p-6 w-full rounded-lg bg-white" id="get-in-touch-form">                   
                     <x-frontend.get-in-touch />
                 </div>
             </div>
