@@ -112,27 +112,19 @@
                 <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('contact') }}">Contact Us</a></li>
 
             </ul>
-
-
         </div>
-
 
         {{-- Column 3 --}}
         <div class="space-y-5 text-center flex flex-col items-center">
-
             <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">
                 Useful Links
             </h4>
-
             <ul class="space-y-2 text-sm">
 
                 <li><a class="text-slate-500 hover:text-slate-900" href="#"> Our Agents</a></li>
                 <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('student-information') }}">Student Information</a></li>
-
             </ul>
-
         </div>
-
 
         {{-- Column 4 --}}
         <div class="space-y-5 text-center sm:flex sm:flex-col sm:items-end sm:text-end">
@@ -140,15 +132,10 @@
             <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">
                 Accreditation
             </h4>
-
             <ul class="space-y-2 text-sm text-slate-500">
 
                 <li class="mb-3">
                     <div class="flex flex-wrap justify-center items-center gap-4  transition-all duration-500">
-                        <img class="h-10 object-contain"
-                            data-alt="clean geometric logo of a professional education authority in black and white"
-                            src="{{ asset('patner_1.png') }}" alt="patner">
-
                         <img class="h-10 object-contain"
                             data-alt="sleek corporate mark for a global vocational training federation"
                             src="{{ asset('patner_2.png') }}" alt="patner">

@@ -44,7 +44,7 @@
                         Graduate Diploma of Management(Learning).</p>
                 </div>
                 <div class=" mt-8 md:mt-12">
-                    <x-frontend.courses />
+                    <x-frontend.courses :courses="$courses" />
                 </div>
             </div>
 

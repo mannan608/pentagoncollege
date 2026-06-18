@@ -1,9 +1,5 @@
-<div class="">
 
-    <div class="md:mb-4 mb-3 lg:mb-6">
-        <h1 class="text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">Any Questions? Ask Us!!</h1>
-    </div>
-    <form id="get-in-touch-form" action="{{ route('contact.store') }}" method="POST">
+<form id="get-in-touch-form" action="{{ route('contact.store') }}" method="POST">
         @csrf
         <div class="flex flex-col gap-4">
             <x-form.input-text name="name" label="Full Name" value="" placeholder="Enter Full Name..." />
@@ -20,7 +16,6 @@
             </button>
         </div>
     </form>
-</div>
 
 @if ($errors->any())
     <script>

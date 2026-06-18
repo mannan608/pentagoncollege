@@ -111,10 +111,10 @@
                         Graduate Diploma of Management(Learning).</p>
                 </div>
                 <div class=" mt-8 md:mt-12">
-                    <x-frontend.courses />
+                    <x-frontend.courses :courses="$courses" />
                 </div>
                 <div class="flex items-center justify-center mt-6 md:mt-8 lg:mt-10">
-                    <a href="#"
+                    <a href="{{ route('courses') }}"
                         class="inline-flex items-center justify-center bg-brand-600 text-white  px-5 py-3 lg:px-6 lg:py-3  rounded-lg
                         hover:bg-brand-500
                         transition duration-300">

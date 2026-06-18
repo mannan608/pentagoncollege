@@ -14,6 +14,13 @@ Route::get('/contact', [FrontendController::class, 'contactPage'])->name('contac
 Route::get('/student-information', [FrontendController::class, 'studentInformation'])->name('student-information');
 Route::get('/course-details', [FrontendController::class, 'courseDetails'])->name('course-details');
 Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
+Route::get('/courses/{slug}', [FrontendController::class, 'singleCourse'])->name('single-course');
+Route::get('/course/enroll/{slug}', [FrontendController::class, 'showEnrollCourse'])
+    ->name('enroll-course');
+
+Route::post('/course/enroll/{slug}', [FrontendController::class, 'storeEnrollCourse'])
+    ->name('course.enroll');
+    
 Route::get('/generate-sitemap', [SitemapController::class, 'generate']);
 
 Route::get('/blogs', [BlogController::class, 'index'])

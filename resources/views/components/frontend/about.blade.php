@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <a href="#"
+            <a href="{{ route('about') }}"
                 class=" mt-8 lg:mt-10 inline-flex items-center justify-center bg-brand-600 text-white px-5 py-3 lg:px-6 lg:py-3
                         rounded-lg  hover:bg-brand-500
                         transition duration-300">

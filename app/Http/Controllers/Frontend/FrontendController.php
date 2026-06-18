@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contacts;
+use App\Models\Course;
 use App\Traits\CourseTrait;
 use App\Traits\RouteDiscoveryTrait;
 use Illuminate\Http\Request;
@@ -27,7 +29,7 @@ class FrontendController extends Controller
     {
         return view('frontend.pages.contact', ['title' => 'Contact Us']);
     }
-      public function studentInformation()
+    public function studentInformation()
     {
         return view('frontend.pages.student-information', ['title' => 'Student Information']);
     }
@@ -41,15 +43,76 @@ class FrontendController extends Controller
         return view('frontend.pages.course-details', ['title' => 'Course Details']);
     }
 
-    public function courses()
+    public function courses(Course $courses)
     {
-        return view('frontend.pages.courses', ['title' => 'Courses']);
+        $courses = Course::query()->select('id', 'name', 'slug', 'thumbnail', 'code', 'cricos')->get();
+        return view('frontend.pages.courses', compact('courses'));
     }
+    public function singleCourse($slug)
+    {
+        $courses = Course::where('slug', '!=', $slug)
+            ->select('id', 'name', 'slug', 'thumbnail', 'code', 'cricos')
+            ->get();
 
-    public function contactForm(){
+        $course = Course::where('slug', $slug)
+            ->select(
+                'id',
+                'name',
+                'slug',
+                'thumbnail',
+                'code',
+                'cricos'
+            )
+            ->firstOrFail();
 
-    $courses = $this->getCourses();
+            // return $course;
+
+        $view = 'frontend.pages.courses.' . $slug;
+
+        if (!view()->exists($view)) {
+            abort(404, 'Course page template not found');
+        }
+
+        return view($view, [
+            'course' => $course,
+            'title' => $course->name,
+            'courses' => $courses,
+        ]);
+    }
+    public function contactForm()
+    {
+
+        $courses = $this->getCourses();
 
         return view('components.frontend.consultation-form', compact('courses'));
+    }
+    public function showEnrollCourse($slug)
+{
+    $course = Course::where('slug', $slug)
+        ->select('id', 'name', 'slug')
+        ->firstOrFail();
+
+    return view('frontend.pages.enroll-course', compact('course'));
+}
+    public function storeEnrollCourse(Request $request, $slug)
+    {
+        $course = Course::where('slug', $slug)
+        ->select('id', 'name', 'slug')
+        ->firstOrFail();
+
+    $data = $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'email', 'max:255'],
+        'phone' => ['required', 'string', 'max:50'],
+        'message' => ['required', 'string'],
+    ]);
+
+    $data['course_id'] = $course->id;
+
+    Contacts::create($data);
+
+    return redirect()
+        ->back()
+        ->with('success', 'Your Application has been submitted successfully.');
     }
 }

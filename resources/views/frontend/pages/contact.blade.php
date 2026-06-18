@@ -111,9 +111,14 @@
                     </div>
 
                 </div>
-                <div class="border border-gray-200 p-6 w-full rounded-lg bg-white" id="get-in-touch-form">                   
+                <div class="border border-gray-200 p-6 w-full rounded-lg bg-white max-w-150 mx-auto" id="get-in-touch-form">
+                
+                    <div class="md:mb-4 mb-3 lg:mb-6">
+                        <h1 class="text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-900">Any Questions? Ask
+                            Us!!</h1>
+                    </div>
                     <x-frontend.get-in-touch />
-                </div>
+            </div>
             </div>
 
         </div>
