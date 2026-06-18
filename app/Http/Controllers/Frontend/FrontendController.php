@@ -41,6 +41,11 @@ class FrontendController extends Controller
         return view('frontend.pages.course-details', ['title' => 'Course Details']);
     }
 
+    public function courses()
+    {
+        return view('frontend.pages.courses', ['title' => 'Courses']);
+    }
+
     public function contactForm(){
 
     $courses = $this->getCourses();

@@ -13,6 +13,7 @@ Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
 Route::get('/contact', [FrontendController::class, 'contactPage'])->name('contact');
 Route::get('/student-information', [FrontendController::class, 'studentInformation'])->name('student-information');
 Route::get('/course-details', [FrontendController::class, 'courseDetails'])->name('course-details');
+Route::get('/courses', [FrontendController::class, 'courses'])->name('courses');
 Route::get('/generate-sitemap', [SitemapController::class, 'generate']);
 
 Route::get('/blogs', [BlogController::class, 'index'])

@@ -33,7 +33,7 @@
                         Diploma of Management (Learning).
                     </p>
 
-                    <a href="#"
+                    <a href="{{ route('courses') }}"
                         class="inline-flex items-center justify-center
                         bg-brand-600 text-white
                         px-5 py-3 lg:px-6 lg:py-3

@@ -165,7 +165,7 @@
                 <a href="{{ route('home') }}"
                     class="{{ request()->routeIs('home') ? 'text-brand-600 font-medium' : 'text-white' }}">Home</a>
                 <a href="{{ route('about') }}"
-                    class="{{ request()->routeIs('#') ? 'text-brand-600 font-medium' : 'text-white' }}">Our
+                    class="{{ request()->routeIs('courses') ? 'text-brand-600 font-medium' : 'text-white' }}">Our
                     Courses</a>
                 <a href="{{ route('about') }}"
                     class="{{ request()->routeIs('about') ? 'text-brand-600 font-medium' : 'text-white' }}">About</a>

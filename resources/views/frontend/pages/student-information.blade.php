@@ -30,7 +30,7 @@
 
                 <div class="flex flex-col sm:flex-row gap-4">
 
-                    <a href="#"
+                    <a href="{{ route('courses') }}"
                         class="inline-flex items-center justify-center
                         bg-brand-600 text-white
                         px-5 py-3 lg:px-6 lg:py-3
@@ -122,8 +122,8 @@
                     </div>
 
                 </div>
-                <div class="">
-                    <x-frontend.contact-form />
+                <div class="border border-gray-200 p-6 w-full rounded-lg bg-white" id="get-in-touch-form">
+                    <x-frontend.get-in-touch />
                 </div>
             </div>
 

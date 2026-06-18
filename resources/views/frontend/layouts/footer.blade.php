@@ -107,9 +107,9 @@
             </h4>
             <ul class="space-y-2 text-sm">
 
-                <li><a class="text-slate-500 hover:text-slate-900" href="#"> About us</a></li>
-                <li><a class="text-slate-500 hover:text-slate-900" href="#">Our Courses</a></li>
-                <li><a class="text-slate-500 hover:text-slate-900" href="#">Contact Us</a></li>
+                <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('about') }}"> About us</a></li>
+                <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('courses') }}">Our Courses</a></li>
+                <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('contact') }}">Contact Us</a></li>
 
             </ul>
 
@@ -127,7 +127,7 @@
             <ul class="space-y-2 text-sm">
 
                 <li><a class="text-slate-500 hover:text-slate-900" href="#"> Our Agents</a></li>
-                <li><a class="text-slate-500 hover:text-slate-900" href="#">Student Information</a></li>
+                <li><a class="text-slate-500 hover:text-slate-900" href="{{ route('student-information') }}">Student Information</a></li>
 
             </ul>
 
