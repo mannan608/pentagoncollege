@@ -15,9 +15,10 @@ class FrontendController extends Controller
 
     public function landingPage()
     {
+         $courses = Course::query()->select('id', 'name', 'slug', 'thumbnail', 'code', 'cricos')->get();
         return view('frontend.pages.home', [
             'title' => 'Pentagon College',
-        ]);
+        ],compact('courses'));
     }
 
     public function aboutPage()
