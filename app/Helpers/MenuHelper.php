@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class MenuHelper
 {
@@ -16,80 +17,102 @@ class MenuHelper
                 'permission' => 'dashboard.view',
             ],
             [
-                'name' => 'Manage SEO',
+                'name' => 'CMS Manage',
                 'icon' => 'pages',
-                'route' => 'role.seo.index',
-                'permission' => 'seo.list',
+                'subItems' => [
+                    [
+                        'name' => 'SEOs',
+                        'route' => 'role.seo.index',
+                        'permission' => 'seo.list',
+                    ],
+                    [
+                        'name' => 'Blogs',
+                        'route' => 'role.blogs.index',
+                        'permission' => 'blog.list',
+                    ],
+                    [
+                        'name' => 'Events',
+                        'route' => 'role.events.index',
+                        'permission' => 'event.list',
+                    ],
+                ],
             ],
-
             [
-                'name' => 'Manage Blog',
-                'icon' => 'pages',
-                'route' => 'role.blogs.index',
-                'permission' => 'blog.list',
-            ],
-            [
-                'name' => 'Manage Events',
-                'icon' => 'calendar',
-                'route' => 'role.events.index',
-                'permission' => 'event.list',
-            ],
-
-            [
-                'name' => 'Roles & Permissions',
+                'name' => 'Access Control',
                 'icon' => 'authentication',
-                'route' => 'role.roles-permissions.index',
-                'permission' => 'role.list',
+                'subItems' => [
+                    [
+                        'name' => 'Role & Permission',
+                        'route' => 'role.roles-permissions.index',
+                        'permission' => 'role.list',
+                    ],
+                    [
+                        'name' => 'Users',
+                        'route' => 'role.users.index',
+                        'permission' => 'user.list',
+                    ],
+                ],
             ],
             [
-                'name' => 'Users',
-                'icon' => 'user-profile',
-                'route' => 'role.users.index',
-                'permission' => 'user.list',
-            ],
-
-            [
-                'name' => 'Manage University',
+                'name' => 'Organization',
                 'icon' => 'university',
-                'route' => 'role.universities.index',
-                'permission' => 'university.list',
-            ],
-
-            [
-                'name' => 'Campuses',
-                'icon' => 'university',
-                'route' => 'role.campuses.index',
-                'permission' => 'campus.list',
-            ],
-             [
-                'name' => 'Courses',
-                'icon' => 'university',
-                'route' => 'role.courses.index',
-                'permission' => 'course.list',
+                'subItems' => [
+                    [
+                        'name' => 'University',
+                        'route' => 'role.universities.index',
+                        'permission' => 'university.list',
+                    ],
+                    [
+                        'name' => 'Campus',
+                        'route' => 'role.campuses.index',
+                        'permission' => 'campus.list',
+                    ],
+                    [
+                        'name' => 'Provider',
+                        'route' => 'role.providers.index',
+                        'permission' => 'provider.list',
+                    ],
+                ],
             ],
             [
-                'name' => 'Contacts',
-                'icon' => 'university',
-                'route' => 'role.contacts.index',
-                'permission' => 'contact.list',
+                'name' => 'Courses Manage',
+                'icon' => 'tables',
+                'subItems' => [
+                    [
+                        'name' => 'Categories',
+                        'route' => 'role.course-categories.index',
+                        'permission' => 'category.list',
+                        'optional' => true,
+                    ],
+                    [
+                        'name' => 'Courses',
+                        'route' => 'role.courses.index',
+                        'permission' => 'course.list',
+                    ],
+                ],
             ],
-             [
-                'name' => 'Subscriptions',
-                'icon' => 'university',
-                'route' => 'role.subscribers.index',
-                'permission' => 'subscriber.list',
+            [
+                'name' => 'Leads',
+                'icon' => 'chat',
+                'subItems' => [
+                    [
+                        'name' => 'Messages',
+                        'route' => 'role.contacts.index',
+                        'permission' => 'contact.list',
+                    ],
+                    [
+                        'name' => 'Subscriptions',
+                        'route' => 'role.subscribers.index',
+                        'permission' => 'subscriber.list',
+                    ],
+                    [
+                        'name' => 'Enroll',
+                        'route' => 'role.enrollments.index',
+                        'permission' => 'enrollment.list',
+                        'optional' => true,
+                    ],
+                ],
             ],
-
-            
-
-            // [
-            //     'name' => 'Reports',
-            //     'icon' => 'reports',
-            //     'subItems' => [
-            //         ['name' => 'User Reports', 'path' => self::rolePath('user-reports'), 'permission' => 'report.user.view'],
-            //         ['name' => 'Course Reports', 'path' => self::rolePath('course-reports'), 'permission' => 'report.course.view'],
-            //     ],
-            // ],
 
         ];
     }
@@ -107,12 +130,12 @@ class MenuHelper
 
     public static function rolePath(string $path): string
     {
-        return '/' . trim((string) user_role_prefix(), '/') . '/' . trim($path, '/');
+        return '/'.trim((string) user_role_prefix(), '/').'/'.trim($path, '/');
     }
 
     public static function itemUrl(array $item): string
     {
-        if (isset($item['route'])) {
+        if (isset($item['route']) && Route::has($item['route'])) {
             return role_route($item['route']);
         }
 
@@ -128,6 +151,10 @@ class MenuHelper
         }
 
         return array_values(array_filter(array_map(function (array $item) use ($user): ?array {
+            if (($item['optional'] ?? false) && isset($item['route']) && ! Route::has($item['route'])) {
+                return null;
+            }
+
             if (isset($item['subItems'])) {
                 $item['subItems'] = self::visibleItems($item['subItems']);
 
@@ -187,7 +214,7 @@ class MenuHelper
     <path d="M20 10V20" />
     <path d="M10 20V15H14V20" />
     <path d="M2 20H22" />
-</svg>'
+</svg>',
         ];
 
         return $icons[$iconName] ?? '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/></svg>';

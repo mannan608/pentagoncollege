@@ -2,9 +2,6 @@
 @php
     use App\Helpers\MenuHelper;
     $menuGroups = MenuHelper::getMenuGroups();
-
-    // Get current path
-    $currentPath = request()->path();
 @endphp
 
 <aside id="sidebar"
@@ -12,19 +9,16 @@
     x-data="{
         openSubmenus: {},
         init() {
-            // Auto-open Dashboard menu on page load
             this.initializeActiveMenus();
         },
         initializeActiveMenus() {
-            const currentPath = '{{ $currentPath }}';
-
             @foreach ($menuGroups as $groupIndex => $menuGroup)
                 @foreach ($menuGroup['items'] as $itemIndex => $item)
                     @if (isset($item['subItems']))
                         // Check if any submenu item matches current path
                         @foreach ($item['subItems'] as $subItem)
-                            if (currentPath === '{{ ltrim($subItem['path'], '/') }}' ||
-                                window.location.pathname === '{{ $subItem['path'] }}') {
+                            @php($subItemUrl = MenuHelper::itemUrl($subItem))
+                            if (this.isActive({{ \Illuminate\Support\Js::from($subItemUrl) }})) {
                                 this.openSubmenus['{{ $groupIndex }}-{{ $itemIndex }}'] = true;
                             } @endforeach
             @endif
@@ -45,6 +39,9 @@
         isSubmenuOpen(groupIndex, itemIndex) {
             const key = groupIndex + '-' + itemIndex;
             return this.openSubmenus[key] || false;
+        },
+        isAnyActive(paths) {
+            return Array.isArray(paths) && paths.some((path) => this.isActive(path));
         },
         isActive(path) {
             if (!path || path === '#') return false;
@@ -116,18 +113,19 @@
                                 @php($itemUrl = MenuHelper::itemUrl($item))
                                 <li>
                                     @if (isset($item['subItems']))
+                                        @php($subItemUrls = collect($item['subItems'])->map(fn ($subItem) => MenuHelper::itemUrl($subItem))->filter(fn ($url) => $url !== '#')->values()->all())
                                         <!-- Menu Item with Submenu -->
                                         <button @click="toggleSubmenu({{ $groupIndex }}, {{ $itemIndex }})"
                                             class="menu-item group w-full"
                                             :class="[
-                                                isSubmenuOpen({{ $groupIndex }}, {{ $itemIndex }}) ?
+                                                (isSubmenuOpen({{ $groupIndex }}, {{ $itemIndex }}) || isAnyActive({{ \Illuminate\Support\Js::from($subItemUrls) }})) ?
                                                 'menu-item-active' : 'menu-item-inactive',
                                                 !$store.sidebar.isExpanded && !$store.sidebar.isHovered ?
                                                 'xl:justify-center' : 'xl:justify-start'
                                             ]">
 
                                             <!-- Icon -->
-                                            <span :class="isSubmenuOpen({{ $groupIndex }}, {{ $itemIndex }}) ?
+                                            <span :class="(isSubmenuOpen({{ $groupIndex }}, {{ $itemIndex }}) || isAnyActive({{ \Illuminate\Support\Js::from($subItemUrls) }})) ?
                                                     'menu-item-icon-active' : 'menu-item-icon-inactive'">
                                                 {!! MenuHelper::getIconSvg($item['icon']) !!}
                                             </span>
@@ -139,7 +137,7 @@
                                                 {{ $item['name'] }}
                                                 @if (!empty($item['new']))
                                                     <span class="absolute right-10"
-                                                        :class="isActive('{{ $item['path'] ?? '' }}') ?
+                                                        :class="isAnyActive({{ \Illuminate\Support\Js::from($subItemUrls) }}) ?
                                                             'menu-dropdown-badge menu-dropdown-badge-active' :
                                                             'menu-dropdown-badge menu-dropdown-badge-inactive'">
                                                         new
@@ -152,7 +150,7 @@
                                                 class="ml-auto w-5 h-5 transition-transform duration-200"
                                                 :class="{
                                                     'rotate-180 text-brand-500': isSubmenuOpen({{ $groupIndex }},
-                                                        {{ $itemIndex }})
+                                                        {{ $itemIndex }}) || isAnyActive({{ \Illuminate\Support\Js::from($subItemUrls) }})
                                                 }"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -163,16 +161,17 @@
                                         <div x-show="isSubmenuOpen({{ $groupIndex }}, {{ $itemIndex }}) && ($store.sidebar.isExpanded || $store.sidebar.isHovered || $store.sidebar.isMobileOpen)">
                                             <ul class="mt-2 space-y-1 ml-9">
                                                 @foreach ($item['subItems'] as $subItem)
+                                                    @php($subItemUrl = MenuHelper::itemUrl($subItem))
                                                     <li>
-                                                        <a href="{{ $subItem['path'] }}" class="menu-dropdown-item"
-                                                            :class="isActive('{{ $subItem['path'] }}') ?
+                                                        <a href="{{ $subItemUrl }}" class="menu-dropdown-item"
+                                                            :class="isActive({{ \Illuminate\Support\Js::from($subItemUrl) }}) ?
                                                                 'menu-dropdown-item-active' :
                                                                 'menu-dropdown-item-inactive'">
                                                             {{ $subItem['name'] }}
                                                             <span class="flex items-center gap-1 ml-auto">
                                                                 @if (!empty($subItem['new']))
                                                                     <span
-                                                                        :class="isActive('{{ $subItem['path'] }}') ?
+                                                                        :class="isActive({{ \Illuminate\Support\Js::from($subItemUrl) }}) ?
                                                                             'menu-dropdown-badge menu-dropdown-badge-active' :
                                                                             'menu-dropdown-badge menu-dropdown-badge-inactive'">
                                                                         new
@@ -180,7 +179,7 @@
                                                                 @endif
                                                                 @if (!empty($subItem['pro']))
                                                                     <span
-                                                                        :class="isActive('{{ $subItem['path'] }}') ?
+                                                                        :class="isActive({{ \Illuminate\Support\Js::from($subItemUrl) }}) ?
                                                                             'menu-dropdown-badge-pro menu-dropdown-badge-pro-active' :
                                                                             'menu-dropdown-badge-pro menu-dropdown-badge-pro-inactive'">
                                                                         pro
@@ -196,7 +195,7 @@
                                                 <!-- Simple Menu Item -->
                                         <a href="{{ $itemUrl }}" class="menu-item group"
                                             :class="[
-                                                isActive('{{ $itemUrl }}') ? 'menu-item-active' :
+                                                isActive({{ \Illuminate\Support\Js::from($itemUrl) }}) ? 'menu-item-active' :
                                                 'menu-item-inactive',
                                                 (!$store.sidebar.isExpanded && !$store.sidebar.isHovered && !$store.sidebar.isMobileOpen) ?
                                                 'xl:justify-center' :
@@ -205,7 +204,7 @@
 
                                             <!-- Icon -->
                                             <span
-                                                :class="isActive('{{ $itemUrl }}') ? 'menu-item-icon-active' :
+                                                :class="isActive({{ \Illuminate\Support\Js::from($itemUrl) }}) ? 'menu-item-icon-active' :
                                                     'menu-item-icon-inactive'">
                                                 {!! MenuHelper::getIconSvg($item['icon']) !!}
                                             </span>
