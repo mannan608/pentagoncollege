@@ -57,14 +57,7 @@ class FrontendController extends Controller
             ->get();
 
         $course = Course::where('slug', $slug)
-            ->select(
-                'id',
-                'name',
-                'slug',
-                'thumbnail',
-                'code',
-                'cricos'
-            )
+            ->select('id', 'name', 'slug','thumbnail','code','cricos')
             ->firstOrFail();
 
             // return $course;

@@ -36,9 +36,9 @@
                     {{-- Home --}}
                     <a href="{{ route('home') }}"
                         class="relative font-normal transition-all duration-300
-        {{ request()->routeIs('home') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
-        after:absolute after:left-0 after:-bottom-1.5
-        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        {{ request()->routeIs('home') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        after:absolute after:left-0 after:-bottom-1.5
+                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
 
                         Home
                     </a>
@@ -46,9 +46,9 @@
                     <a href="#" id="dropdownHoverButton" data-dropdown-toggle="dropdownHover"
                         data-dropdown-trigger="hover"
                         class="flex items-center relative font-normal transition-all duration-300
-        {{ request()->routeIs('') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
-        after:absolute after:left-0 after:-bottom-1.5
-        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300"
+                            {{ request()->routeIs('') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                            after:absolute after:left-0 after:-bottom-1.5
+                            after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300"
                         type="button">
                         Our Courses
                         <svg class="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -83,18 +83,18 @@
                     {{-- About --}}
                     <a href="{{ route('about') }}"
                         class="relative font-normal transition-all duration-300
-        {{ request()->routeIs('about') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
-        after:absolute after:left-0 after:-bottom-1.5
-        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        {{ request()->routeIs('about') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        after:absolute after:left-0 after:-bottom-1.5
+                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
 
                         About
                     </a>
                     {{-- student --}}
                     <a href="{{ route('student-information') }}"
                         class="relative font-normal transition-all duration-300
-        {{ request()->routeIs('student-information') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
-        after:absolute after:left-0 after:-bottom-1.5
-        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        {{ request()->routeIs('student-information') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        after:absolute after:left-0 after:-bottom-1.5
+                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
 
                         Student Information
                     </a>
@@ -102,27 +102,27 @@
                     {{-- Contact --}}
                     <a href="{{ route('contact') }}"
                         class="relative font-normal transition-all duration-300
-        {{ request()->routeIs('contact') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
-        after:absolute after:left-0 after:-bottom-1.5
-        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                            {{ request()->routeIs('contact') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                            after:absolute after:left-0 after:-bottom-1.5
+                            after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
 
                         Contact
                     </a>
 
                     {{-- <a href="{{ route('blogs') }}"
                     class="relative font-normal transition-all duration-300
-        {{ request()->routeIs('blogs') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
-        after:absolute after:left-0 after:-bottom-1.5
-        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        {{ request()->routeIs('blogs') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        after:absolute after:left-0 after:-bottom-1.5
+                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
 
                     Blogs
                 </a> --}}
 
                     {{-- <a href="{{ route('events') }}"
                     class="relative font-normal transition-all duration-300
-        {{ request()->routeIs('contact') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
-        after:absolute after:left-0 after:-bottom-1.5
-        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
+                        {{ request()->routeIs('contact') ? 'text-brand-600 font-normal after:w-full' : 'text-white hover:text-brand-600 after:w-0 hover:after:w-full' }}
+                        after:absolute after:left-0 after:-bottom-1.5
+                        after:h-0.5 after:bg-brand-600 after:transition-all after:duration-300">
 
                     Events
                 </a> --}}
