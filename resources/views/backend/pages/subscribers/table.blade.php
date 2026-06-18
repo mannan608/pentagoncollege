@@ -18,7 +18,7 @@
 
 <div x-data="{
     tableRowData: {{ \Illuminate\Support\Js::from($tableRowData) }},
-    subscriberBaseUrl: {{ \Illuminate\Support\Js::from(url('/' . $role . '/subscriber')) }},
+    subscriberDeleteUrlTemplate: {{ \Illuminate\Support\Js::from(route('role.subscribers.destroy', ['role' => $role, 'subscriber' => '__SUBSCRIBER__'])) }},
     showDeleteModal: false,
     rowToDelete: null,
 
@@ -38,7 +38,7 @@
     },
  
 }" @keydown.escape.window="closeDeleteModal()">
-        <form x-ref="deleteForm" :action="rowToDelete ? (subscriberBaseUrl + '/' + rowToDelete.id) : '#'" method="POST" class="hidden">
+        <form x-ref="deleteForm" :action="rowToDelete ? subscriberDeleteUrlTemplate.replace('__SUBSCRIBER__', rowToDelete.id) : '#'" method="POST" class="hidden">
             @csrf
             @method('DELETE')
         </form>
@@ -51,7 +51,7 @@
                         <div class="text-base font-semibold text-gray-800 dark:text-white/90">Delete subscriber?</div>
                         <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                             This will permanently delete subscriber:
-                            <span class="font-mono" x-text="rowToDelete ? rowToDelete.name : ''"></span>
+                            <span class="font-mono" x-text="rowToDelete ? rowToDelete.email : ''"></span>
                         </div>
                         <div class="mt-5 flex justify-end gap-3">
                             <button type="button" @click="closeDeleteModal()"

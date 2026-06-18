@@ -28,24 +28,25 @@
  </form>
 </div>
 
+@if ($errors->any())
+    <script>
+        window.addEventListener('load', () => {
+            document
+                .getElementById('consultation-form')
+                ?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
 
-<script>
-window.addEventListener('load', () => {
+            const firstErrorField = document.querySelector(
+                '.is-invalid, [aria-invalid="true"], .border-red-500'
+            );
 
-    document
-        .getElementById('consultation-form')
-        ?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+            firstErrorField?.focus();
         });
+    </script>
+@endif
 
-    const firstErrorField = document.querySelector(
-        '.is-invalid, [aria-invalid="true"], .border-red-500'
-    );
-
-    firstErrorField?.focus();
-});
-</script>
 
 
 <div x-data="{ showModal: {{ session('success') ? 'true' : 'false' }} }">
