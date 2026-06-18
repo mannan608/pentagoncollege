@@ -127,16 +127,17 @@
     </section>
 
     <section class=" py-8 md:py-12 lg:py-14 ">
-       <x-frontend.why />
+        <x-frontend.why />
     </section>
 
-     <section class=" py-8 md:py-12 lg:py-14 bg-white ">
-       <x-frontend.consultation-form :courses="$courses" />
+    <section class=" py-8 md:py-12 lg:py-14 bg-white ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <x-frontend.consultation-form />
+        </div>
     </section>
     <section class="pt-8 md:pt-12 lg:pt-14">
         <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
             <x-frontend.cta />
         </div>
     </section>
-
 @endsection

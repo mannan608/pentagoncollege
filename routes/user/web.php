@@ -27,8 +27,7 @@ Route::get('/events/{slug}', [EventController::class, 'show'])
     ->name('event-details');
 
 Route::get('/register', [FrontendController::class, 'registration'])->name('register');
-Route::get('/inquiry-us', [ContactController::class, 'create'])
-    ->name('contact.create');
+
 
 Route::post('/inquiry-us', [ContactController::class, 'store'])
     ->name('contact.store');

@@ -111,8 +111,8 @@
                     </div>
 
                 </div>
-                <div class="">
-                    <x-frontend.contact-form />
+                <div class="">                   
+                    <x-frontend.get-in-touch />
                 </div>
             </div>
 

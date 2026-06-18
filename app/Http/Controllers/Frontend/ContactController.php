@@ -14,15 +14,6 @@ class ContactController extends Controller
         private readonly CourseRepositoryInterface $courses
     ) {}
 
-    public function create()
-    {
-
-        $courses = $this->courses->getAll();
-
-        // dd($courses);
-
-        return view('components.frontend.consultation-form', compact('courses'));
-    }
 
     public function store(Request $request)
     {
@@ -31,7 +22,7 @@ class ContactController extends Controller
             'email' => ['required', 'email', 'max:255'],
             'phone' => ['required', 'string', 'max:50'],
             'message' => ['required', 'string'],
-            'course_id' => ['required', 'exists:courses,id'],
+            'course_id' => ['nullable', 'exists:courses,id'],
         ]);
 
         Contacts::create($data);
