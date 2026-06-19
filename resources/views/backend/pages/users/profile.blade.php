@@ -9,7 +9,7 @@
             </div>
         @endif
 
-        <div class="bg-white rounded-2xl shadow-sm border">
+        <div class="bg-white rounded-2xl shadow-sm border dark:bg-gray-900">
 
             <div class="p-6 border-b">
                 <h2 class="text-xl font-semibold">
@@ -31,11 +31,11 @@
                             Profile Photo
                         </label>
                         <div class="flex flex-col items-center justify-center">
-                            <label class="relative group cursor-pointer">
+                            <label class="relative group cursor-pointer border border-gray-400 rounded-full">
                                 <!-- Current Profile Picture -->
                                 <img id="avatarPreview"
-                                    src="{{ $user->avatar ? asset('uploads/users/' . $user->avatar) : asset('images/user/owner.png') }}"
-                                    class="w-32 h-32 rounded-full object-cover object-center  transition-transform duration-300 group-hover:scale-105"
+                                    src="{{ $user->avatar ? Storage::url($user->avatar) : asset('images/user/owner.png') }}"
+                                    class="w-32 h-32 rounded-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                                     alt="User Profile" />
 
                                 <!-- Hover Overlay -->
@@ -52,7 +52,6 @@
                                 </p>
                             @enderror
                         </div>
-
                     </div>
 
                     <!-- Info -->
@@ -155,11 +154,8 @@
                         </div>
 
                     </div>
-
                 </div>
-
             </form>
-
         </div>
 
     </div>
