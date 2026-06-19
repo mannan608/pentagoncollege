@@ -7,9 +7,9 @@ use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 use App\Repositories\Interfaces\CourseRepositoryInterface;
-use App\Traits\HandlesFiles;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class CourseController extends Controller
@@ -45,7 +45,7 @@ class CourseController extends Controller
             $request->validated(),
             $request
         );
-
+        Cache::forget('navbar_courses');
         return redirect()
             ->route('role.courses.index', [
                 'role' => $request->route('role')
@@ -53,7 +53,8 @@ class CourseController extends Controller
             ->with('success', 'Course created successfully.');
     }
 
-    public function show(Request $request,Course $course): View {
+    public function show(Request $request, Course $course): View
+    {
         $request->user()->can('course.view') || abort(403);
 
         return view('backend.pages.courses.show', [
@@ -62,7 +63,8 @@ class CourseController extends Controller
         ]);
     }
 
-    public function edit( Request $request, string $role, Course $course): View {
+    public function edit(Request $request, string $role, Course $course): View
+    {
         $request->user()->can('course.edit') || abort(403);
 
         return view('backend.pages.courses.edit', [
@@ -71,12 +73,14 @@ class CourseController extends Controller
         ]);
     }
 
-    public function update(UpdateCourseRequest $request,string $role,Course $course ): RedirectResponse {
+    public function update(UpdateCourseRequest $request, string $role, Course $course): RedirectResponse
+    {
         $this->courses->update(
             $course,
             $request->validated(),
             $request
         );
+        Cache::forget('navbar_courses');
 
         return redirect()
             ->route('role.courses.index', [
@@ -85,10 +89,12 @@ class CourseController extends Controller
             ->with('success', 'Course updated successfully.');
     }
 
-    public function destroy(Request $request, string $role,Course $course): RedirectResponse {
+    public function destroy(Request $request, string $role, Course $course): RedirectResponse
+    {
         $request->user()->can('course.delete') || abort(403);
 
         $this->courses->delete($course);
+        Cache::forget('navbar_courses');
 
         return redirect()
             ->route('role.courses.index', [

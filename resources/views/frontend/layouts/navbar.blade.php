@@ -61,21 +61,22 @@
                     <!-- Dropdown menu -->
                     <div id="dropdownHover" class="z-10 hidden bg-white rounded-md shadow-lg max-w-150">
                         <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownHoverButton">
-                            <li>
-                                <a href="#"
-                                    class="inline-flex items-center w-full p-2 hover:bg-gray-100 hover:text-heading rounded">Advanced
-                                    Diploma of Information Technology – ICT60220</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="inline-flex items-center w-full p-2 hover:bg-gray-100 hover:text-heading rounded">Advanced
-                                    Diploma of Leadership and Management – BSB60420</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="inline-flex items-center w-full p-2 hover:bg-gray-100 hover:text-heading rounded">Diploma
-                                    of Information Technology -ICT50220</a>
-                            </li>
+
+                            @forelse($courses as $course)
+                                <li>
+                                    <a href="{{ route('single-course', $course->slug) }}"
+                                        class="inline-flex items-center w-full p-2 hover:bg-gray-100 hover:text-heading rounded">
+
+                                        {{ $course->name }}
+                                    </a>
+                                </li>
+                            @empty
+                                <li>
+                                    <span class="block p-2 text-gray-500">
+                                        No courses found
+                                    </span>
+                                </li>
+                            @endforelse
                         </ul>
                     </div>
 
@@ -150,7 +151,7 @@
                     <a href="{{ route('contact') }}"
                         class=" text-sm   bg-brand-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-600 transition">
                         ENQUIRY NOW
-                </a>
+                    </a>
 
                 </div>
 
@@ -173,7 +174,7 @@
                     class="{{ request()->routeIs('student-information') ? 'text-brand-600 font-medium' : 'text-white' }}">Student
                     Information</a>
                 <a href="{{ route('contact') }}"
-                    class="{{ request()->routeIs('contact') ? 'text-brand-600 font-medium' : 'text-white' }}">Contact</a>                
+                    class="{{ request()->routeIs('contact') ? 'text-brand-600 font-medium' : 'text-white' }}">Contact</a>
 
                 {{-- <div class="flex items-center gap-4>
                     <button
@@ -200,25 +201,24 @@
             </div>
         </div>
     </header>
-<script>
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-    const openIcon = document.getElementById('menuOpenIcon');
-    const closeIcon = document.getElementById('menuCloseIcon');
+        const openIcon = document.getElementById('menuOpenIcon');
+        const closeIcon = document.getElementById('menuCloseIcon');
 
-    menuBtn.addEventListener('click', () => {
+        menuBtn.addEventListener('click', () => {
 
-        mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('hidden');
 
-        if (mobileMenu.classList.contains('hidden')) {
-            openIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-        } else {
-            openIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
-        }
+            if (mobileMenu.classList.contains('hidden')) {
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            } else {
+                openIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            }
 
-    });
-
-</script>
+        });
+    </script>

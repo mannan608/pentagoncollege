@@ -21,6 +21,9 @@ use App\Repositories\Interfaces\CourseRepositoryInterface;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Course;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -61,10 +64,10 @@ class AppServiceProvider extends ServiceProvider
             CampusRepositoryInterface::class,
             CampusRepository::class
         );
-         $this->app->bind(
-        CourseRepositoryInterface::class,
-        CourseRepository::class
-    );
+        $this->app->bind(
+            CourseRepositoryInterface::class,
+            CourseRepository::class
+        );
     }
 
     /**
@@ -76,6 +79,21 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::before(function ($user, string $ability): ?bool {
             return $user->hasRole(config('rbac.super_admin_role')) ? true : null;
+        });
+
+        View::composer('frontend.layouts.navbar', function ($view) {
+
+            $courses = Cache::remember(
+                'navbar_courses',
+                now()->addDay(),
+                function () {
+                    return Course::select('id', 'name', 'slug')
+                        ->orderBy('name')
+                        ->get();
+                }
+            );
+
+            $view->with('courses', $courses);
         });
     }
 }

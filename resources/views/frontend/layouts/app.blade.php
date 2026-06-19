@@ -84,7 +84,7 @@
                 document.body.classList.add('dark', 'bg-gray-900');
             } else {
                 document.documentElement.classList.remove('dark');
-                document.body.classList.remove('dark', 'bg-gray-900');
+                // document.body.classList.remove('dark', 'bg-gray-900');
             }
         })();
     </script>
