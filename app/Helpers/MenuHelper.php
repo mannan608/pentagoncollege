@@ -47,11 +47,6 @@ class MenuHelper
                         'permission' => 'role.list',
                     ],
                     [
-                        'name' => 'Permission',
-                        'route' => 'role.permissions.index',
-                        'permission' => 'permission.list',
-                    ],
-                    [
                         'name' => 'Users',
                         'route' => 'role.users.index',
                         'permission' => 'user.list',
