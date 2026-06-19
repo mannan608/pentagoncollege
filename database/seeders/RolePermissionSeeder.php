@@ -33,8 +33,10 @@ class RolePermissionSeeder extends Seeder
             'role.edit',
             'role.delete',
             'role.manage',
+            
             // 'permission.list',
             // 'permission.sync',
+
             // Blog permissions
             'blog.list',
             'blog.view',
