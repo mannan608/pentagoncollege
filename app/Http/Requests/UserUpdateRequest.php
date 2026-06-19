@@ -22,6 +22,8 @@ class UserUpdateRequest extends FormRequest
             'name' => ['required', 'string', 'max:191'],
             'email' => ['required', 'email', 'max:191', Rule::unique('users', 'email')->ignore($targetUserId)],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'phone' => ['nullable', 'string', 'max:191'],
+            'avatar' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'status' => ['required', Rule::in(['active', 'inactive', 'suspended'])],
             'primary_role_id' => ['required', 'exists:roles,id'],
             'roles' => ['required', 'array', 'min:1'],

@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CampusController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SubscriberController;
@@ -51,8 +51,6 @@ Route::prefix('{role}')
             ->middleware('permission:event.manage');
 
         Route::resource('roles-permissions', RolePermissionController::class);
-        Route::resource('permissions', PermissionController::class)
-            ->except(['create', 'show', 'edit']);
 
         Route::resource('users', UserController::class);
         Route::resource('universities', UniversityController::class);
@@ -61,5 +59,6 @@ Route::prefix('{role}')
         Route::resource('courses', CourseController::class);
         Route::resource('contacts', ContactController::class);
         Route::resource('subscribers', SubscriberController::class);
-
+        Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     });
