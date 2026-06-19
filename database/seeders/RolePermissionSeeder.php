@@ -33,10 +33,13 @@ class RolePermissionSeeder extends Seeder
             'role.edit',
             'role.delete',
             'role.manage',
-            
+
             // 'permission.list',
             // 'permission.sync',
-
+            'permission.list',
+            'permission.create',
+            'permission.edit',
+            'permission.delete',
             // Blog permissions
             'blog.list',
             'blog.view',
@@ -113,7 +116,7 @@ class RolePermissionSeeder extends Seeder
             'name' => config('rbac.super_admin_role'),
             'guard_name' => config('rbac.default_guard', 'web'),
         ]);
-           $defaultRole = Role::firstOrCreate([
+        $defaultRole = Role::firstOrCreate([
             'name' => 'default',
             'guard_name' => config('rbac.default_guard', 'web'),
         ]);
