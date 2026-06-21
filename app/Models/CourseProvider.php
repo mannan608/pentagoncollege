@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class CourseProvider extends Model
 {
+    protected $table = 'providers';
     protected $fillable = [
         'user_id',
         'institution_name',

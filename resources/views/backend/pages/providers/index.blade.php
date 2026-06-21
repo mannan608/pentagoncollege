@@ -18,15 +18,15 @@
 
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
             <div>
-                <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">University Management</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Manage universities, logos, and banners.
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">Providers Management</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Manage your providers.
                 </p>
             </div>
-            <a href="{{ role_route('role.universities.create') }}"
+            <a href="{{ role_route('role.providers.create') }}"
                 class="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-600 transition-colors">
-                + Add New University
+                + Add New Providers
             </a>
         </div>
-       @include('backend.pages.universities.table', ['items' => $universities])
+       @include('backend.pages.providers.table', ['items' => $providers])
     </div>
 @endsection

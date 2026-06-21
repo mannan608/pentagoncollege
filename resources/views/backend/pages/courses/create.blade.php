@@ -47,18 +47,19 @@
                         <x-form.textarea-input name="description" label="Description" rows="5"
                             placeholder="Enter Course description..." :value="old('description')" />
                     </div>
+                    <div class="flex justify-end p-5">
+                    <button type="submit"
+                        class=" w-fit rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-500">
+                        Create Course
+                    </button>
+                </div>
 
                 </div>
             </div>
 
             <div class="lg:col-span-4">             
 
-                <div class="mt-5">
-                    <button type="submit"
-                        class=" w-full rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-500">
-                        Create Course
-                    </button>
-                </div>
+                
             </div>
         </div>
     </form>
