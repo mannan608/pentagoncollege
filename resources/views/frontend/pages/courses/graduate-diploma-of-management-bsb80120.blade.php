@@ -26,7 +26,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="grid grid-cols-1 md:grid-cols-[70%_30%] gap-6 md:gap-0">
                 <div class="content pr-0 md:pr-8 lg:pr-10">
-                   <div class="w-full aspect-[16/9] overflow-hidden rounded-2xl">
+                    <div class="w-full aspect-[16/9] overflow-hidden rounded-2xl">
                         <img src="{{ asset(Storage::url($course->thumbnail)) }}" alt="{{ $course->name }}"
                             class="w-full h-full object-cover">
                     </div>
@@ -70,7 +70,7 @@
                             <img src="{{ asset('patner_2.png') }}" alt="Partner Logo"
                                 class="w-40 md:w-48 lg:w-34 h-auto object-contain">
 
-                            <button type="button"
+                            <button type="button" data-open-apply-modal
                                 class="mt-3 w-full lg:w-auto bg-brand-600 hover:bg-brand-600 text-white text-sm md:text-[15px] px-5 py-2.5 rounded-xl font-medium transition-all duration-300">
                                 Enroll Course
                             </button>
@@ -126,30 +126,26 @@
                                 aria-labelledby="overview-tab">
 
                                 <p class="text-sm md:text-base leading-7 text-neutral-600 mb-3">
-                                    This qualification reflects the role of individuals in a variety of information and
-                                    communications technology (ICT) roles who have established specialised skills in a
-                                    technical ICT function. Individuals in these roles carry out moderately complex tasks in
-                                    a specialist field, working independently, as part of a team or leading a deliverable
-                                    with others. They may apply their skills across a wide range of industries, business
-                                    functions and departments, or as a business owner (sole trader/contractor). For watch
-                                    enthusiasts seeking premium alternatives, <a href="https://www.replica-watches.net/"
-                                        class="text-brand-600">replica rolex</a> timepieces offer excellent value
-                                    without compromising on quality. The best replicas available today use high-grade
-                                    materials like 316L stainless steel, sapphire crystals, and reliable automatic
-                                    movements. These watches faithfully reproduce iconic Rolex designs, from the
-                                    Submariner’s rotating bezel to the Daytona’s chronograph functions. Many collectors
-                                    appreciate having multiple high-quality replicas in their collection, allowing them to
-                                    enjoy different styles without the substantial investment required for authentic luxury
-                                    watches.
+                                    This qualification reflects the role of individuals who apply highly specialised
+                                    knowledge and skills in the field of organisational learning and capability development.
+                                    Individuals in these roles generate and evaluate complex ideas. They also initiate,
+                                    design and execute major learning and development functions within an organisation.
+                                    Typically, they would have full responsibility and accountability for the personal
+                                    output and work of others.
                                 </p>
-
-
+                                <p class="text-sm md:text-base leading-7 text-neutral-600">
+                                    This qualification may apply to leaders and managers in an organisation where learning
+                                    is used to build organisational capability. The job roles that relate to this
+                                    qualification may also include RTO Manager and RTO Director.
+                                </p>
                             </div>
 
                             <div class="hidden p-3 md:p-4 rounded-xl border border-brand-500" id="entry-requirements"
                                 role="tabpanel" aria-labelledby="entry-requirements-tab">
 
-                                <ul class="list-disc pl-5 space-y-0.5 text-gray-600 text-sm md:text-base mb-3">
+                                <ul class="list-disc pl-5 space-y-2 text-gray-600 text-sm md:text-base mb-3">
+                                    <li>18 years old or over.</li>
+
                                     <li>Completed Year 12 or overseas equivalent.</li>
 
                                     <li>
@@ -166,9 +162,25 @@
                                     </li>
 
                                     <li>
-                                        English: Minimum score of IELTS 6.0 or equivalent (please refer to the
-                                        DIBP website) or an English proficiency of upper intermediate level or
-                                        above from any NEAS accredited ELICOS provider.
+                                        English Language Proficiency: Minimum IELTS score of 6.0.
+                                    </li>
+
+                                    <li>
+                                        <strong>Portfolio of Evidence:</strong> Applicants must submit a portfolio
+                                        that includes work samples, third-party evidence, and reflective statements
+                                        demonstrating their competencies and learning outcomes.
+                                    </li>
+
+                                    <li>
+                                        <strong>Statement of Purpose:</strong> A written statement outlining the
+                                        applicant’s motivations for enrolling in the course, their career goals,
+                                        and how the course aligns with their professional development.
+                                    </li>
+
+                                    <li>
+                                        <strong>Letter of Recommendation:</strong> If applicable, a letter from
+                                        previous employers attesting to the applicant’s English proficiency and
+                                        academic capabilities.
                                     </li>
                                 </ul>
                             </div>
@@ -179,14 +191,14 @@
                                 <div class="space-y-6">
 
                                     <!-- Course Header -->
-                                    <div class="">
+                                    <div>
                                         <span
                                             class="inline-flex items-center rounded-full bg-brand-500/10 px-4 py-2 text-sm font-medium text-brand-500">
-                                            Diploma
+                                            Graduate Diploma
                                         </span>
 
                                         <h2 class="mt-2 text-lg md:text-xl lg:text-2xl font-bold text-heading">
-                                            Diploma of Information Technology ICT50220
+                                            Graduate Diploma of Management (Learning) BSB80120
                                         </h2>
                                     </div>
 
@@ -198,7 +210,7 @@
                                                 Total Units
                                             </p>
                                             <h3 class="text-base md:text-lg lg:text-xl font-bold">
-                                                20
+                                                8
                                             </h3>
                                         </div>
 
@@ -207,7 +219,7 @@
                                                 Core Units
                                             </p>
                                             <h3 class="text-base md:text-lg lg:text-xl font-bold">
-                                                6
+                                                3
                                             </h3>
                                         </div>
 
@@ -216,7 +228,7 @@
                                                 Elective Units
                                             </p>
                                             <h3 class="text-base md:text-lg lg:text-xl font-bold">
-                                                14
+                                                5
                                             </h3>
                                         </div>
 
@@ -225,14 +237,15 @@
                                                 Duration
                                             </p>
                                             <h3 class="text-base md:text-lg lg:text-xl font-bold">
-                                                78 Weeks
+                                                52 Weeks
                                             </h3>
                                         </div>
 
                                     </div>
 
                                     <!-- Study Load -->
-                                    <div class="">
+                                    <div>
+
                                         <h3 class="text-lg md:text-xl font-bold mb-2">
                                             Study Load
                                         </h3>
@@ -244,7 +257,7 @@
                                                     Duration
                                                 </p>
                                                 <p class="text-base md:text-lg lg:text-xl font-semibold mt-1">
-                                                    78 Weeks
+                                                    52 Weeks
                                                 </p>
                                             </div>
 
@@ -262,7 +275,7 @@
                                     </div>
 
                                     <!-- Core Units -->
-                                    <div class="">
+                                    <div>
 
                                         <div class="flex items-center justify-between mb-2">
                                             <h3 class="text-lg md:text-xl font-bold">
@@ -271,7 +284,7 @@
 
                                             <span
                                                 class="rounded-full bg-brand-500/10 px-4 py-1 text-sm font-medium text-brand-500">
-                                                6 Units
+                                                3 Units
                                             </span>
                                         </div>
 
@@ -279,32 +292,18 @@
 
                                             <div
                                                 class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                BSBXCS402 Promote workplace cyber security awareness and best practices
+                                                BSBHRM613 Contribute to the development of learning and development
+                                                strategies
                                             </div>
 
                                             <div
                                                 class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                BSBXTW401 Lead and facilitate a team
+                                                BSBLDR811 Lead strategic transformation
                                             </div>
 
                                             <div
                                                 class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTICT532 Apply IP, ethics and privacy policies in ICT environments
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                BSBCRT512 Originate and develop concepts
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTICT517 Match ICT needs with the strategic direction of the organisation
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTSAS527 Manage client problems
+                                                TAELED803 Implement improved learning practice
                                             </div>
 
                                         </div>
@@ -312,7 +311,7 @@
                                     </div>
 
                                     <!-- Elective Units -->
-                                    <div class="">
+                                    <div>
 
                                         <div class="flex items-center justify-between mb-2">
                                             <h3 class="text-lg md:text-xl font-bold">
@@ -321,7 +320,7 @@
 
                                             <span
                                                 class="rounded-full bg-brand-500/10 px-4 py-1 text-sm font-medium text-brand-500">
-                                                14 Units
+                                                5 Units
                                             </span>
                                         </div>
 
@@ -329,73 +328,27 @@
 
                                             <div
                                                 class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTICT523 Gather data to identify business requirements
+                                                BSBLDR601 Lead and manage organisational change
                                             </div>
 
                                             <div
                                                 class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTSAS526 Review and update disaster recovery and contingency plans
+                                                BSBSTR801 Lead innovative thinking and practice
                                             </div>
 
                                             <div
                                                 class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTSAD507 Design and implement quality assurance processes for business
-                                                solutions
+                                                BSBOPS601 Develop and implement business plans
                                             </div>
 
                                             <div
                                                 class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTCYS407 Gather, analyse and interpret threat data
+                                                BSBCRT611 Apply critical thinking for complex problem solving
                                             </div>
 
                                             <div
                                                 class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTICT530 Design user experience solutions
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTWEB513 Build dynamic websites
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTWEB514 Create dynamic web pages
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTICT518 Research and review hardware technology options for organisations
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTWEB518 Build a document using extensible markup language
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTWEB519 Develop complex web page layouts
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTWEB520 Develop complex cascading style sheets
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTICT521 Select new technology supported business model
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTSAD508 Develop technical requirements for business solutions
-                                            </div>
-
-                                            <div
-                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                                                ICTSAD509 Produce ICT feasibility reports
+                                                BSBLDR602 Provide Leadership across the organisations
                                             </div>
 
                                         </div>
