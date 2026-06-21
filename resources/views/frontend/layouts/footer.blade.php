@@ -8,7 +8,7 @@
 
             <div class="flex sm:justify-start items-center justify-center">
                 <a href="/">
-                    <img src="{{ asset('logo.webp') }}" alt="logo" class="w-24 h-auto">
+                    <img src="{{ asset('logo.webp') }}" alt="logo" class="w-34 h-auto">
                 </a>
             </div>
 
