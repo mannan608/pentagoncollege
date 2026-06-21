@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProviderStoreRequest;
 use App\Http\Requests\ProviderUpdateRequest;
-use App\Models\UniversityProvider;
+use App\Models\CourseProvider;
 use App\Repositories\Interfaces\ProviderRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class ProviderController extends Controller
+class CourseProviderController extends Controller
 {
     public function __construct(
         private readonly ProviderRepositoryInterface $providers
@@ -50,7 +50,7 @@ class ProviderController extends Controller
 
     public function show(
         Request $request,
-        UniversityProvider $provider
+        CourseProvider $provider
     ): View {
         $request->user()->can('provider.view') || abort(403);
 
@@ -63,7 +63,7 @@ class ProviderController extends Controller
 public function edit(
     Request $request,
     string $role,
-    UniversityProvider $provider
+    CourseProvider $provider
 ): View {
         $request->user()->can('provider.edit') || abort(403);
 
@@ -75,7 +75,7 @@ public function edit(
 
     public function update(
         ProviderUpdateRequest $request,
-        UniversityProvider $provider
+        CourseProvider $provider
     ): RedirectResponse {
         $this->providers->update($provider, $request->validated());
 
@@ -89,7 +89,7 @@ public function edit(
     public function destroy(
         Request $request,
         string $role,
-        UniversityProvider $provider
+        CourseProvider $provider
     ): RedirectResponse {
         $request->user()->can('provider.delete') || abort(403);
 

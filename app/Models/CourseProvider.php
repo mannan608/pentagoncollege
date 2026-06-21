@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class UniversityProvider extends Model
+class CourseProvider extends Model
 {
     protected $fillable = [
         'user_id',

@@ -4,7 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Campus;
 use App\Models\University;
-use App\Models\UniversityProvider;
+use App\Models\CourseProvider;
 use App\Repositories\Interfaces\ProviderRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +12,7 @@ class ProviderRepository implements ProviderRepositoryInterface
 {
     public function paginate(int $perPage = 15)
     {
-        return UniversityProvider::with('university')
+        return CourseProvider::with('university')
             ->latest()
             ->paginate($perPage);
     }
@@ -30,24 +30,24 @@ class ProviderRepository implements ProviderRepositoryInterface
                 ->get(['id', 'name']);
         }
 
-    public function findById(int $id): UniversityProvider
+    public function findById(int $id): CourseProvider
     {
-        return UniversityProvider::with('university')
+        return CourseProvider::with('university')
             ->findOrFail($id);
     }
 
-    public function create(array $data): UniversityProvider
+    public function create(array $data): CourseProvider
     {
         return DB::transaction(function () use ($data) {
 
-            return UniversityProvider::create($data);
+            return CourseProvider::create($data);
         });
     }
 
     public function update(
-        UniversityProvider $provider,
+        CourseProvider $provider,
         array $data
-    ): UniversityProvider {
+    ): CourseProvider {
         return DB::transaction(function () use ($provider, $data) {
 
             $provider->update($data);
@@ -56,7 +56,7 @@ class ProviderRepository implements ProviderRepositoryInterface
         });
     }
 
-    public function delete(UniversityProvider $provider): bool
+    public function delete(CourseProvider $provider): bool
     {
         return DB::transaction(function () use ($provider) {
             return $provider->delete();

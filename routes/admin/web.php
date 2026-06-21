@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\CampusController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\ProviderController;
+use App\Http\Controllers\Admin\CourseProviderController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\UniversityController;
@@ -55,7 +55,7 @@ Route::prefix('{role}')
         Route::resource('users', UserController::class);
         Route::resource('universities', UniversityController::class);
         Route::resource('campuses', CampusController::class);
-        Route::resource('providers', ProviderController::class);
+        Route::resource('providers', CourseProviderController::class);
         Route::resource('courses', CourseController::class);
         Route::resource('contacts', ContactController::class);
         Route::resource('subscribers', SubscriberController::class);
