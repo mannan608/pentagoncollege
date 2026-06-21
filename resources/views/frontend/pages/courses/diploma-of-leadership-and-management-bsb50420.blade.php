@@ -163,181 +163,193 @@
                             <div class="hidden p-3 md:p-4 rounded-xl border border-brand-500" id="course-details"
                                 role="tabpanel" aria-labelledby="course-details-tab">
 
-                              <div class="space-y-6">
+                                <div class="space-y-6">
 
-    <!-- Course Header -->
-    <div>
-        <span
-            class="inline-flex items-center rounded-full bg-brand-500/10 px-4 py-2 text-sm font-medium text-brand-500">
-            Diploma
-        </span>
+                                    <!-- Course Header -->
+                                    <div>
+                                        <span
+                                            class="inline-flex items-center rounded-full bg-brand-500/10 px-4 py-2 text-sm font-medium text-brand-500">
+                                            Diploma
+                                        </span>
 
-        <h2 class="mt-2 text-lg md:text-xl lg:text-2xl font-bold text-heading">
-            Diploma of Leadership and Management BSB50420
-        </h2>
-    </div>
+                                        <h2 class="mt-2 text-lg md:text-xl lg:text-2xl font-bold text-heading">
+                                            Diploma of Leadership and Management BSB50420
+                                        </h2>
+                                    </div>
 
-    <!-- Quick Stats -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                    <!-- Quick Stats -->
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-        <div class="rounded-2xl border border-brand-500/10 p-5">
-            <p class="text-sm text-neutral-500 mb-1">
-                Total Units
-            </p>
-            <h3 class="text-base md:text-lg lg:text-xl font-bold">
-                12
-            </h3>
-        </div>
+                                        <div class="rounded-2xl border border-brand-500/10 p-5">
+                                            <p class="text-sm text-neutral-500 mb-1">
+                                                Total Units
+                                            </p>
+                                            <h3 class="text-base md:text-lg lg:text-xl font-bold">
+                                                12
+                                            </h3>
+                                        </div>
 
-        <div class="rounded-2xl border border-brand-500/10 p-5">
-            <p class="text-sm text-neutral-500 mb-1">
-                Core Units
-            </p>
-            <h3 class="text-base md:text-lg lg:text-xl font-bold">
-                6
-            </h3>
-        </div>
+                                        <div class="rounded-2xl border border-brand-500/10 p-5">
+                                            <p class="text-sm text-neutral-500 mb-1">
+                                                Core Units
+                                            </p>
+                                            <h3 class="text-base md:text-lg lg:text-xl font-bold">
+                                                6
+                                            </h3>
+                                        </div>
 
-        <div class="rounded-2xl border border-brand-500/10 p-5">
-            <p class="text-sm text-neutral-500 mb-1">
-                Elective Units
-            </p>
-            <h3 class="text-base md:text-lg lg:text-xl font-bold">
-                6
-            </h3>
-        </div>
+                                        <div class="rounded-2xl border border-brand-500/10 p-5">
+                                            <p class="text-sm text-neutral-500 mb-1">
+                                                Elective Units
+                                            </p>
+                                            <h3 class="text-base md:text-lg lg:text-xl font-bold">
+                                                6
+                                            </h3>
+                                        </div>
 
-        <div class="rounded-2xl border border-brand-500/10 p-5">
-            <p class="text-sm text-neutral-500 mb-1">
-                Duration
-            </p>
-            <h3 class="text-base md:text-lg lg:text-xl font-bold">
-                78 Weeks
-            </h3>
-        </div>
+                                        <div class="rounded-2xl border border-brand-500/10 p-5">
+                                            <p class="text-sm text-neutral-500 mb-1">
+                                                Duration
+                                            </p>
+                                            <h3 class="text-base md:text-lg lg:text-xl font-bold">
+                                                78 Weeks
+                                            </h3>
+                                        </div>
 
-    </div>
+                                    </div>
 
-    <!-- Study Load -->
-    <div>
+                                    <!-- Study Load -->
+                                    <div>
 
-        <h3 class="text-lg md:text-xl font-bold mb-2">
-            Study Load
-        </h3>
+                                        <h3 class="text-lg md:text-xl font-bold mb-2">
+                                            Study Load
+                                        </h3>
 
-        <div class="flex flex-col sm:flex-row gap-4">
+                                        <div class="flex flex-col sm:flex-row gap-4">
 
-            <div class="flex-1 rounded-2xl border border-brand-500/10 p-5">
-                <p class="text-sm text-neutral-500">
-                    Duration
-                </p>
-                <p class="text-base md:text-lg lg:text-xl font-semibold mt-1">
-                    78 Weeks
-                </p>
-            </div>
+                                            <div class="flex-1 rounded-2xl border border-brand-500/10 p-5">
+                                                <p class="text-sm text-neutral-500">
+                                                    Duration
+                                                </p>
+                                                <p class="text-base md:text-lg lg:text-xl font-semibold mt-1">
+                                                    78 Weeks
+                                                </p>
+                                            </div>
 
-            <div class="flex-1 rounded-2xl border border-brand-500/10 p-5">
-                <p class="text-sm text-neutral-500">
-                    Weekly Study Hours
-                </p>
-                <p class="text-base md:text-lg lg:text-xl font-semibold mt-1">
-                    20 Hours / Week
-                </p>
-            </div>
+                                            <div class="flex-1 rounded-2xl border border-brand-500/10 p-5">
+                                                <p class="text-sm text-neutral-500">
+                                                    Weekly Study Hours
+                                                </p>
+                                                <p class="text-base md:text-lg lg:text-xl font-semibold mt-1">
+                                                    20 Hours / Week
+                                                </p>
+                                            </div>
 
-        </div>
+                                        </div>
 
-    </div>
+                                    </div>
 
-    <!-- Core Units -->
-    <div>
+                                    <!-- Core Units -->
+                                    <div>
 
-        <div class="flex items-center justify-between mb-2">
-            <h3 class="text-lg md:text-xl font-bold">
-                Core Units
-            </h3>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="text-lg md:text-xl font-bold">
+                                                Core Units
+                                            </h3>
 
-            <span
-                class="rounded-full bg-brand-500/10 px-4 py-1 text-sm font-medium text-brand-500">
-                6 Units
-            </span>
-        </div>
+                                            <span
+                                                class="rounded-full bg-brand-500/10 px-4 py-1 text-sm font-medium text-brand-500">
+                                                6 Units
+                                            </span>
+                                        </div>
 
-        <div class="grid gap-3">
+                                        <div class="grid gap-3">
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBCMM511 Communicate with influence
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBCMM511 Communicate with influence
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBCRT511 Develop critical thinking in others
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBCRT511 Develop critical thinking in others
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBLDR523 Lead and manage effective workplace relationships
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBLDR523 Lead and manage effective workplace relationships
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBOPS502 Manage business operational plans
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBOPS502 Manage business operational plans
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBPEF502 Develop and use emotional intelligence
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBPEF502 Develop and use emotional intelligence
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBTWK502 Manage team effectiveness
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBTWK502 Manage team effectiveness
+                                            </div>
 
-        </div>
+                                        </div>
 
-    </div>
+                                    </div>
 
-    <!-- Elective Units -->
-    <div>
+                                    <!-- Elective Units -->
+                                    <div>
 
-        <div class="flex items-center justify-between mb-2">
-            <h3 class="text-lg md:text-xl font-bold">
-                Elective Units
-            </h3>
+                                        <div class="flex items-center justify-between mb-2">
+                                            <h3 class="text-lg md:text-xl font-bold">
+                                                Elective Units
+                                            </h3>
 
-            <span
-                class="rounded-full bg-brand-500/10 px-4 py-1 text-sm font-medium text-brand-500">
-                6 Units
-            </span>
-        </div>
+                                            <span
+                                                class="rounded-full bg-brand-500/10 px-4 py-1 text-sm font-medium text-brand-500">
+                                                6 Units
+                                            </span>
+                                        </div>
 
-        <div class="grid gap-3">
+                                        <div class="grid gap-3">
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBTWK501 Lead diversity and inclusion
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBTWK501 Lead diversity and inclusion
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBTWK503 Manage meetings
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBTWK503 Manage meetings
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBCMM412 Lead difficult conversations
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBCMM412 Lead difficult conversations
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBXCM501 Lead communication in the workplace
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBXCM501 Lead communication in the workplace
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBOPS504 Manage business risk
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBOPS504 Manage business risk
+                                            </div>
 
-            <div class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
-                BSBLDR522 Manage people performance
-            </div>
+                                            <div
+                                                class="rounded-lg border border-brand-500/10 p-4 text-sm md:text-[15px] text-neutral-500">
+                                                BSBLDR522 Manage people performance
+                                            </div>
 
-        </div>
+                                        </div>
 
-    </div>
+                                    </div>
 
-</div>
+                                </div>
 
                             </div>
 

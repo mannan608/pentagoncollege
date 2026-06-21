@@ -26,7 +26,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="grid grid-cols-1 md:grid-cols-[70%_30%] gap-6 md:gap-0">
                 <div class="content pr-0 md:pr-8 lg:pr-10">
-                   <div class="w-full aspect-[16/9] overflow-hidden rounded-2xl">
+                    <div class="w-full aspect-[16/9] overflow-hidden rounded-2xl">
                         <img src="{{ asset(Storage::url($course->thumbnail)) }}" alt="{{ $course->name }}"
                             class="w-full h-full object-cover">
                     </div>
@@ -37,8 +37,9 @@
                         <div class="flex-1">
                             <ul class="list-disc pl-5 space-y-2 text-neutral-600 text-sm">
                                 <li>
-                                    <span class="font-medium text-neutral-900 text-sm">Course Code:  {{$course->code}}</span>
-                                    | <span class="font-medium text-neutral-900 text-sm">CRICOS {{$course->cricos}}</span>
+                                    <span class="font-medium text-neutral-900 text-sm">Course Code:
+                                        {{ $course->code }}</span>
+                                    | <span class="font-medium text-neutral-900 text-sm">CRICOS {{ $course->cricos }}</span>
                                 </li>
 
                                 <li>
@@ -58,7 +59,7 @@
 
                                 <li>
                                     <span class="font-medium text-neutral-900">Start Dates & Intakes:</span>
-                                    <a href="{{route('contact')}}" class="text-brand-600">Contact us</a>
+                                    <a href="{{ route('contact') }}" class="text-brand-600">Contact us</a>
                                 </li>
                             </ul>
                         </div>
@@ -394,28 +395,28 @@
                     <div class="grid grid-cols-1 gap-4">
 
                         @foreach ($courses as $course)
-                        <!-- Course Card -->
-                        <a href="{{ route('single-course', $course['slug'])}}" class="group block">
-                            <div class="overflow-hidden rounded-2xl border border-brand-500/10">
-                                <div class="aspect-16/10 overflow-hidden">
-                                    <img src="{{ asset(Storage::url($course->thumbnail)) }}"
-                    alt="{{ $course['name'] }}"
-                                        class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                                </div>
+                            <!-- Course Card -->
+                            <a href="{{ route('single-course', $course['slug']) }}" class="group block">
+                                <div class="overflow-hidden rounded-2xl border border-brand-500/10">
+                                    <div class="aspect-16/10 overflow-hidden">
+                                        <img src="{{ asset(Storage::url($course->thumbnail)) }}"
+                                            alt="{{ $course['name'] }}"
+                                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                                    </div>
 
-                                <div class="p-3 md:p-4 lg:p-5">
-                                    <h3
-                                        class="text-base md:text-lg font-semibold text-neutral-900 group-hover:text-brand-500 transition">
-                                        {{$course['name']}}
-                                    </h3>
+                                    <div class="p-3 md:p-4 lg:p-5">
+                                        <h3
+                                            class="text-base md:text-lg font-semibold text-neutral-900 group-hover:text-brand-500 transition">
+                                            {{ $course['name'] }}
+                                        </h3>
 
-                                    <p class="mt-2 text-xs md:text-sm text-neutral-500">
-                                       Code : {{$course['code']}} | Cricos {{$course['cricos']}}
-                                    </p>
+                                        <p class="mt-2 text-xs md:text-sm text-neutral-500">
+                                            Code : {{ $course['code'] }} | Cricos {{ $course['cricos'] }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                         @endforeach
+                            </a>
+                        @endforeach
 
                     </div>
 
@@ -425,8 +426,8 @@
         </div>
     </section>
 
-      <section class=" py-8 md:py-12 lg:py-14 bg-white ">
-       <x-frontend.consultation-form />
+    <section class=" py-8 md:py-12 lg:py-14 bg-white ">
+        <x-frontend.consultation-form />
     </section>
     <section class="pt-8 md:pt-12 lg:pt-14">
         <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">

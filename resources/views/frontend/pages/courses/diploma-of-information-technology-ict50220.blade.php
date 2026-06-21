@@ -26,7 +26,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="grid grid-cols-1 md:grid-cols-[70%_30%] gap-6 md:gap-0">
                 <div class="content pr-0 md:pr-8 lg:pr-10">
-                   <div class="w-full aspect-[16/9] overflow-hidden rounded-2xl">
+                    <div class="w-full aspect-[16/9] overflow-hidden rounded-2xl">
                         <img src="{{ asset(Storage::url($course->thumbnail)) }}" alt="{{ $course->name }}"
                             class="w-full h-full object-cover">
                     </div>
