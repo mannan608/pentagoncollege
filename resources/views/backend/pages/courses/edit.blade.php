@@ -41,14 +41,14 @@
                             name="thumbnail" 
                             label="Thumbnail" 
                             accept="image/*" 
-                            :existing="$course->thumbnail ? asset(\Illuminate\Support\Facades\Storage::url($course->thumbnail)) : null" 
+                            :existing="$course->thumbnail ? asset(($course->thumbnail)) : null" 
                         />
 
                         <x-form.file-uploader 
                             name="course_material" 
                             label="Course Material" 
                             accept="pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar" 
-                            :existing="$course->course_material ? asset(\Illuminate\Support\Facades\Storage::url($course->course_material)) : null" 
+                            :existing="$course->course_material ? asset(($course->course_material)) : null" 
                         />
 
                         <x-form.textarea-input name="overview" label="Overview" rows="5"

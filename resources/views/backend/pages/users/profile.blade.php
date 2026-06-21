@@ -34,7 +34,7 @@
                             <label class="relative group cursor-pointer border border-gray-400 rounded-full">
                                 <!-- Current Profile Picture -->
                                 <img id="avatarPreview"
-                                    src="{{ $user->avatar ? Storage::url($user->avatar) : asset('images/user/owner.png') }}"
+                                    src="{{ $user->avatar ? asset($user->avatar) : asset('images/user/owner.png') }}"
                                     class="w-32 h-32 rounded-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                                     alt="User Profile" />
 

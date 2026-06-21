@@ -27,7 +27,7 @@
             <div class="grid grid-cols-1 md:grid-cols-[70%_30%] gap-6 md:gap-0">
                 <div class="content pr-0 md:pr-8 lg:pr-10">
                     <div class="w-full aspect-[16/9] overflow-hidden rounded-2xl">
-                        <img src="{{ asset(Storage::url($course->thumbnail)) }}" alt="{{ $course->name }}"
+                        <img src="{{ asset($course->thumbnail) }}" alt="{{ $course->name }}"
                             class="w-full h-full object-cover">
                     </div>
 
@@ -379,7 +379,7 @@
                             <a href="{{ route('single-course', $course['slug']) }}" class="group block">
                                 <div class="overflow-hidden rounded-2xl border border-brand-500/10">
                                     <div class="aspect-16/10 overflow-hidden">
-                                        <img src="{{ asset(Storage::url($course->thumbnail)) }}"
+                                        <img src="{{ asset($course->thumbnail) }}"
                                             alt="{{ $course['name'] }}"
                                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                                     </div>

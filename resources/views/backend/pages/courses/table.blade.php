@@ -15,7 +15,7 @@
             'status' => $course->status,
             'cricos' => $course->cricos,
             'thumbnail' => $course->thumbnail
-                ? asset(Storage::url($course->thumbnail))
+                ? asset($course->thumbnail)
                 : null,
         ];
     })->values();

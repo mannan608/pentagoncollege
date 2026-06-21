@@ -8,7 +8,7 @@
             {{-- Image --}}
             <div class="relative h-56 overflow-hidden bg-gray-100">
 
-                <img src="{{ asset(Storage::url($course->thumbnail)) }}" alt="{{ $course['name'] }}"
+                <img src="{{ asset($course->thumbnail) }}" alt="{{ $course['name'] }}"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
 
                 {{-- Overlay --}}
