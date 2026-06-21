@@ -59,7 +59,7 @@
                     </a>
 
                     <!-- Dropdown menu -->
-                    <div id="dropdownHover" class="z-10 hidden bg-white rounded-md shadow-lg max-w-150">
+                    <div id="dropdownHover" class="z-10 hidden top-full left-0 bg-white rounded-md shadow-lg max-w-150">
                         <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownHoverButton">
 
                             @forelse($courses as $course)
