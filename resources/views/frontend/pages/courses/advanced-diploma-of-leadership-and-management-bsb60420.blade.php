@@ -376,7 +376,7 @@
                             <a href="{{ route('single-course', $course['slug']) }}" class="group block">
                                 <div class="overflow-hidden rounded-2xl border border-brand-500/10">
                                     <div class="aspect-16/10 overflow-hidden">
-                                        <img src="{{ asset(Storage::url($course->thumbnail)) }}"
+                                        <img src="{{ asset($course->thumbnail) }}"
                                             alt="{{ $course['name'] }}"
                                             class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                                     </div>
