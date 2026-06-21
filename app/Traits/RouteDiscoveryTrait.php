@@ -17,6 +17,8 @@ trait RouteDiscoveryTrait
         'login.submit',
         'logout',
         'register',
+        'register.submit',
+        'course.enroll',
         'role.*',
         'password.*',
         'storage.local*',
