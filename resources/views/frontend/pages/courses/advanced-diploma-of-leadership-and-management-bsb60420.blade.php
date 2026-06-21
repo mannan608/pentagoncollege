@@ -70,10 +70,11 @@
                             <img src="{{ asset('patner_2.png') }}" alt="Partner Logo"
                                 class="w-40 md:w-48 lg:w-34 h-auto object-contain">
 
-                            <button type="button" data-open-apply-modal
-                                class="mt-3 w-full lg:w-auto bg-brand-600 hover:bg-brand-600 text-white text-sm md:text-[15px] px-5 py-2.5 rounded-xl font-medium transition-all duration-300">
-                                Enroll Course
-                            </button>
+                           <a href="{{ route('enroll-course', $course['slug']) }}"
+                        class="group/btn text-sm flex items-center gap-2 px-5 py-2.5 bg-brand-500 text-white hover:bg-brand-500  hover:text-white rounded-xl font-medium transition-all">
+
+                        <span>Enroll Course</span>
+                    </a>
 
                         </div>
 
