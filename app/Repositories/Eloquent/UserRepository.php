@@ -10,10 +10,11 @@ class UserRepository implements UserRepositoryInterface
 {
     public function paginate(int $perPage = 25): LengthAwarePaginator
     {
-        return User::query()
-            ->with('roles:id,name', 'primaryRole:id,name')
-            ->latest()
-            ->paginate($perPage);
+         return User::query()
+        ->with('roles:id,name', 'primaryRole:id,name')
+        ->where('primary_role_id', '!=', 5)
+        ->latest()
+        ->paginate($perPage);
     }
 
     public function create(array $data): User

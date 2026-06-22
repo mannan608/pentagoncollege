@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ContactController;
@@ -34,14 +35,18 @@ Route::get('/events', [EventController::class, 'index'])
 
 Route::get('/events/{slug}', [EventController::class, 'show'])
     ->name('event-details');
-
-Route::get('/register', [FrontendController::class, 'registration'])->name('register');
-
-
 Route::post('/inquiry-us', [ContactController::class, 'store'])
     ->name('contact.store');
 
     Route::post('/subscribe', [SubscriberController::class, 'store'])
     ->name('subscribe.store');
+
+Route::get('student/register', [StudentController::class, 'showRegister'])->name('register');
+Route::post('student/register', [StudentController::class, 'register'])->name('register.submit');
+Route::get('student/login', [StudentController::class, 'showLogin'])
+    ->name('student.login');
+
+Route::post('student/login', [StudentController::class, 'login'])
+    ->name('student.login.submit');
 
 

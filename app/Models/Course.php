@@ -42,6 +42,11 @@ class Course extends Model
         return $this->belongsTo(User::class, 'updated_by');
     }
 
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
+
     public function getFinalPriceAttribute()
     {
         return $this->price -

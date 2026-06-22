@@ -73,4 +73,14 @@ class User extends Authenticatable
     {
         return user_role_prefix($this);
     }
+
+     public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    public function isStudent()
+    {
+        return $this->student()->exists();
+    }
 }

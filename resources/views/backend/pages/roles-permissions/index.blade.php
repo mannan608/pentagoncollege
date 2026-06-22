@@ -24,6 +24,7 @@
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
                 <thead class="bg-gray-50 dark:bg-gray-800">
                     <tr>
+                        <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Role Id</th>
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Role</th>
                         <th class="px-4 py-3 text-left text-xs font-medium uppercase text-gray-500">Permissions</th>
                         <th class="px-4 py-3 text-right text-xs font-medium uppercase text-gray-500">Actions</th>
@@ -32,6 +33,7 @@
                 <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
                     @foreach ($roles as $role)
                         <tr>
+                            <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">{{ $role->id }}</td>
                             <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-white">{{ $role->name }}</td>
                             <td class="px-4 py-3 text-sm text-gray-500">{{ $role->permissions_count }}</td>
                             <td class="px-4 py-3 text-right text-sm">
