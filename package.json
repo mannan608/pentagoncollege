@@ -24,6 +24,7 @@
         "flatpickr": "^4.6.13",
         "flowbite": "^4.0.2",
         "jsvectormap": "^1.7.0",
+        "lucide": "^1.21.0",
         "prismjs": "^1.30.0",
         "swiper": "^12.1.4",
         "swiper-npm": "^3.4.5"

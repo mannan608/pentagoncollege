@@ -21,21 +21,21 @@
 
                 <div class="bg-white flex items-center justify-center flex-col gap-3  p-6 border-2 border-dashed rounded-2xl">
                     <div class="icon bg-brand-500 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-full">
-                          👨‍🏫
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gem-icon lucide-gem"><path d="M10.5 3 8 9l4 13 4-13-2.5-6"/><path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z"/><path d="M2 9h20"/></svg>
                     </div>
                     <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
                         Qualified Trainers</h5>                    
                 </div>
                 <div class="bg-white flex items-center justify-center flex-col gap-3  p-6 border-2 border-dashed rounded-2xl">
                     <div class="icon bg-brand-500 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-full">
-                          👨‍🏫
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dollar-sign-icon lucide-dollar-sign"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
                     <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
                        Affordable Courses</h5>                    
                 </div>
                 <div class="bg-white flex items-center justify-center flex-col gap-3  p-6 border-2 border-dashed rounded-2xl">
                     <div class="icon bg-brand-500 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-full">
-                          👨‍🏫
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-plus-icon lucide-heart-plus"><path d="m14.479 19.374-.971.939a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5a5.2 5.2 0 0 1-.219 1.49"/><path d="M15 15h6"/><path d="M18 12v6"/></svg>
                     </div>
                     <h5 class="mb-3 text-base md:text-lg lg:text-xl font-semibold tracking-tight text-heading leading-8">
                         Supportive Environment</h5>                    

@@ -26,7 +26,7 @@
                     <div class="flex gap-3 items-center mb-3">
                         <div
                             class="shrink-0 md:w-12 md:h-12 w-8 h-8 bg-brand-500 rounded-2xl flex items-center justify-center text-brand-500">
-                            👨‍🏫
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus-icon lucide-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
                         </div>
                         <h3 class="font-semibold text-base lg:text-lg text-gray-900">Qualified Trainers</h3>
                     </div>
@@ -42,7 +42,7 @@
                     <div class="flex gap-3 items-center mb-3">
                         <div
                             class="shrink-0 md:w-12 md:h-12 w-8 h-8 bg-brand-500 rounded-2xl flex items-center justify-center text-brand-500">
-                            👨‍🏫
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gem-icon lucide-gem"><path d="M10.5 3 8 9l4 13 4-13-2.5-6"/><path d="M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z"/><path d="M2 9h20"/></svg>
                         </div>
                         <h3 class="font-semibold text-base lg:text-lg text-gray-900">CRICOS Registered</h3>
                     </div>
