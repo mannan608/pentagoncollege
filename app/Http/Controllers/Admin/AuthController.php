@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -108,4 +111,43 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
+
+      public function showRegister()
+    {
+        return view('backend.pages.auth.signup');
+    }
+   public function register(Request $request)
+{
+    $validatedData = $request->validate([
+        'role' => 'required|in:student',
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+        'phone' => 'required|string|max:255',
+        'password' => 'required|string|min:8|confirmed',
+    ]);
+
+    $primaryRoleId = match ($validatedData['role']) {
+        'student' => 5,
+        default => null,
+    };
+
+    $user = User::create([
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+        'phone' => $validatedData['phone'],
+        'password' => Hash::make($validatedData['password']),
+        'status' => 'active',
+        'primary_role_id' => $primaryRoleId,
+    ]);
+
+    if ($validatedData['role'] === 'student') {
+        Student::create([
+            'user_id' => $user->id,
+        ]);
+    }
+
+    return redirect()
+        ->route('login')
+        ->with('message', 'Registration successful.');
+}
 }

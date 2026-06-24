@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Frontend\BlogController;
@@ -41,8 +42,11 @@ Route::post('/inquiry-us', [ContactController::class, 'store'])
 Route::post('/subscribe', [SubscriberController::class, 'store'])
     ->name('subscribe.store');
 
-Route::get('student/register', [StudentController::class, 'showRegister'])->name('register');
-Route::post('student/register', [StudentController::class, 'register'])->name('register.submit');
+Route::get('register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('register', [AuthController::class, 'register'])->name('register.submit');
+Route::get('/signup', function () {
+    return view('backend.pages.auth.signup');
+})->name('signup');
 
 
 Route::prefix('student')

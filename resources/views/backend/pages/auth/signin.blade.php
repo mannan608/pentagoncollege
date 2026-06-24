@@ -1,8 +1,8 @@
 @extends('backend.layouts.fullscreen-layout')
 
 @section('content')
-    <div class="relative z-1 bg-white p-6 sm:p-0 dark:bg-gray-900">
-        <div class="relative flex h-screen w-full flex-col justify-center sm:p-0 lg:flex-row dark:bg-gray-900">
+    <div class="relative z-1 bg-neutral-100 p-6 sm:p-0 dark:bg-gray-900">
+        <div class="relative h-screen w-full p-0 dark:bg-gray-900">
 
             @if (session('message'))
                 <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show" x-transition
@@ -14,9 +14,9 @@
             @endif
 
             <!-- Form -->
-            <div class="flex w-full flex-1 flex-col lg:w-1/2 ">
-
-                <div class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
+            <div class="flex w-full h-full items-center justify-center ">
+                <div
+                    class="mx-auto my-auto border w-full max-w-md border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800 px-5 py-5 sm:px-6 lg:px-8 h-fit rounded-2xl">
                     <div>
                         <div class="mb-5 sm:mb-8">
                             <h1 class="text-title-sm sm:text-title-md mb-2 font-semibold text-gray-800 dark:text-white/90">
@@ -100,6 +100,9 @@
                                                 Keep me logged in
                                             </label>
                                         </div>
+                                        <a href="{{ route('register') }}"
+                                                class="text-brand-500 hover:text-brand-600 dark:text-brand-400 text-sm">Sign
+                                                Up</a>
                                     </div>
                                     <!-- Button -->
                                     <div>
@@ -114,8 +117,6 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- Toggler -->
             <div class="fixed right-6 bottom-6 z-50">
                 <button
