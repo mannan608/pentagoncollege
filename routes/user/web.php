@@ -21,7 +21,7 @@ Route::get('/course/enroll/{slug}', [FrontendController::class, 'showEnrollCours
 
 Route::post('/course/enroll/{slug}', [FrontendController::class, 'storeEnrollCourse'])
     ->name('course.enroll');
-    
+
 Route::get('/generate-sitemap', [SitemapController::class, 'generate']);
 
 Route::get('/blogs', [BlogController::class, 'index'])
@@ -38,15 +38,13 @@ Route::get('/events/{slug}', [EventController::class, 'show'])
 Route::post('/inquiry-us', [ContactController::class, 'store'])
     ->name('contact.store');
 
-    Route::post('/subscribe', [SubscriberController::class, 'store'])
+Route::post('/subscribe', [SubscriberController::class, 'store'])
     ->name('subscribe.store');
 
 Route::get('student/register', [StudentController::class, 'showRegister'])->name('register');
 Route::post('student/register', [StudentController::class, 'register'])->name('register.submit');
-Route::get('student/login', [StudentController::class, 'showLogin'])
-    ->name('student.login');
+// Route::get('student/login', [StudentController::class, 'showLogin'])
+//     ->name('student.login');
 
-Route::post('student/login', [StudentController::class, 'login'])
-    ->name('student.login.submit');
-
-
+// Route::post('student/login', [StudentController::class, 'login'])
+//     ->name('student.login.submit');

@@ -15,10 +15,10 @@ use Illuminate\View\View;
 class StudentController extends Controller
 {
 
-    public function showLogin()
-    {
-        return view('frontend.pages.auth.login');
-    }
+    // public function showLogin()
+    // {
+    //     return view('frontend.pages.auth.login');
+    // }
 
       public function showRegister()
     {
@@ -49,38 +49,38 @@ class StudentController extends Controller
             'user_id' => $user->id,
         ]);
 
-       return redirect()->route('student.login')->with('message', 'Registration successful.');
+       return redirect()->route('login')->with('message', 'Registration successful.');
     }
 
-      public function login(Request $request): RedirectResponse
-    {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string'],
-            'remember' => ['nullable', 'boolean'],
-        ]);
+    //   public function login(Request $request): RedirectResponse
+    // {
+    //     $credentials = $request->validate([
+    //         'email' => ['required', 'email'],
+    //         'password' => ['required', 'string'],
+    //         'remember' => ['nullable', 'boolean'],
+    //     ]);
 
-        $remember = (bool) ($credentials['remember'] ?? false);
-        unset($credentials['remember']);
+    //     $remember = (bool) ($credentials['remember'] ?? false);
+    //     unset($credentials['remember']);
 
-        if (! Auth::attempt($credentials, $remember)) {
-            throw ValidationException::withMessages([
-                'email' => __('auth.failed'),
-            ]);
-        }
+    //     if (! Auth::attempt($credentials, $remember)) {
+    //         throw ValidationException::withMessages([
+    //             'email' => __('auth.failed'),
+    //         ]);
+    //     }
 
-        $request->session()->regenerate();
+    //     $request->session()->regenerate();
 
-        if (! $request->user()->isActive() || ! $request->user()->student) {
-            Auth::logout();
+    //     if (! $request->user()->isActive() || ! $request->user()->student) {
+    //         Auth::logout();
 
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+    //         $request->session()->invalidate();
+    //         $request->session()->regenerateToken();
 
-            throw ValidationException::withMessages([
-                'email' => 'Your account is not ready for access. Please contact support.',
-            ]);
-        }
-        return redirect()->route('student.dashboard')->with('message', 'Login successful.');
-    }
+    //         throw ValidationException::withMessages([
+    //             'email' => 'Your account is not ready for access. Please contact support.',
+    //         ]);
+    //     }
+    //     return redirect()->route('student.dashboard')->with('message', 'Login successful.');
+    // }
 }
