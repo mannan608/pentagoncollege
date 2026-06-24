@@ -45,7 +45,7 @@ Route::get('student/register', [StudentController::class, 'showRegister'])->name
 Route::post('student/register', [StudentController::class, 'register'])->name('register.submit');
 
 
-    Route::prefix('student')
+Route::prefix('student')
     ->name('student.')
     ->middleware(['auth', 'active.user'])
     ->group(function () {

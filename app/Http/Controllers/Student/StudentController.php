@@ -15,11 +15,6 @@ use Illuminate\View\View;
 class StudentController extends Controller
 {
 
-    // public function showLogin()
-    // {
-    //     return view('frontend.pages.auth.login');
-    // }
-
     public function showRegister()
     {
         return view('frontend.pages.auth.register');

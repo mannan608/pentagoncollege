@@ -154,10 +154,16 @@
                     </a>
 
 
-                    {{-- <a href="{{Auth::guard('web')->check(!$user->rolePrefix() === 'student') ? route('role.dashboard') : route('student.dashboard')}}" class="overflow-hidden rounded-full h-11 w-11 block">
-                        <img src="{{ asset('images/user/owner.png') }}" alt="User"
-                            class="w-full h-full object-cover" />
-                    </a> --}}
+                    @auth
+                        <a href="{{ auth()->user()->rolePrefix() === 'student'
+                            ? route('student.dashboard')
+                            : route('role.dashboard', ['role' => auth()->user()->rolePrefix()]) }}"
+                            class="overflow-hidden rounded-full h-11 w-11 block">
+
+                            <img src="{{ asset('images/user/owner.png') }}" alt="User"
+                                class="w-full h-full object-cover" />
+                        </a>
+                    @endauth
 
                 </div>
 
@@ -182,10 +188,19 @@
                 <a href="{{ route('contact') }}"
                     class="{{ request()->routeIs('contact') ? 'text-brand-600 font-medium' : 'text-white' }}">Contact</a>
 
-                <div class="mt-4">
-                    <a href="#"
-                        class="text-sm   bg-brand-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-600 transition">Dashboard</a>
-                </div>
+                @auth
+                    <div class="mt-4">
+                        <a href="{{ auth()->user()->rolePrefix() === 'student'
+                            ? route('student.dashboard')
+                            : route('role.dashboard', ['role' => auth()->user()->rolePrefix()]) }}"
+                            class="text-sm   bg-brand-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-600 transition">
+
+                            Dashboard
+                        </a>
+                    </div>
+                @endauth
+
+
 
                 {{-- <div class="flex items-center gap-4>
                     <button

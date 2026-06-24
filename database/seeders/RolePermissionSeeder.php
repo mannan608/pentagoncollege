@@ -68,6 +68,7 @@ class RolePermissionSeeder extends Seeder
             'university.status.change',
             'university.edit',
             'university.delete',
+            'university.manage',
 
             // Campus permissions
             'campus.list',
