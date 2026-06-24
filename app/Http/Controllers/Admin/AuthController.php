@@ -22,6 +22,41 @@ class AuthController extends Controller
         ]);
     }
 
+    // public function login(Request $request): RedirectResponse
+    // {
+    //     $credentials = $request->validate([
+    //         'email' => ['required', 'email'],
+    //         'password' => ['required', 'string'],
+    //         'remember' => ['nullable', 'boolean'],
+    //     ]);
+
+    //     $remember = (bool) ($credentials['remember'] ?? false);
+    //     unset($credentials['remember']);
+
+    //     if (! Auth::attempt($credentials, $remember)) {
+    //         throw ValidationException::withMessages([
+    //             'email' => __('auth.failed'),
+    //         ]);
+    //     }
+
+    //     $request->session()->regenerate();
+
+    //     if (! $request->user()->isActive() || ! $request->user()->rolePrefix()) {
+    //         Auth::logout();
+
+    //         $request->session()->invalidate();
+    //         $request->session()->regenerateToken();
+
+    //         throw ValidationException::withMessages([
+    //             'email' => 'Your account is not ready for access. Please contact support.',
+    //         ]);
+    //     }
+
+    //     return redirect()->route('role.dashboard', [
+    //         'role' => $request->user()->rolePrefix(),
+    //     ]);
+    // }
+
     public function login(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
@@ -33,7 +68,7 @@ class AuthController extends Controller
         $remember = (bool) ($credentials['remember'] ?? false);
         unset($credentials['remember']);
 
-        if (! Auth::attempt($credentials, $remember)) {
+        if (!Auth::attempt($credentials, $remember)) {
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),
             ]);
@@ -41,21 +76,28 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        if (! $request->user()->isActive() || ! $request->user()->rolePrefix()) {
+        $user = $request->user();
+
+        if (!$user->isActive() || !$user->rolePrefix()) {
             Auth::logout();
 
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
             throw ValidationException::withMessages([
-                'email' => 'Your account is not ready for access. Please contact support.',
+                'email' => 'Your account is not ready for access.',
             ]);
         }
 
+        if ($user->rolePrefix() === 'student') {
+            return redirect()->route('student.dashboard');
+        }
+
         return redirect()->route('role.dashboard', [
-            'role' => $request->user()->rolePrefix(),
+            'role' => $user->rolePrefix(),
         ]);
     }
+
 
     public function logout(Request $request): RedirectResponse
     {

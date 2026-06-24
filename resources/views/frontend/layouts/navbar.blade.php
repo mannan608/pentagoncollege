@@ -130,7 +130,7 @@
 
                 </div>
 
-                <div class="flex items-center gap-4 md:gap-6 lg:gap-8">
+                <div class="flex items-center gap-4 lg:gap-6">
                     {{-- <button
                         class="relative flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-dark-900 h-11 w-11 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
                         @click="$store.theme.toggle()">
@@ -152,6 +152,12 @@
                         class=" text-sm   bg-brand-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-600 transition">
                         ENQUIRY NOW
                     </a>
+
+
+                    {{-- <a href="{{Auth::guard('web')->check(!$user->rolePrefix() === 'student') ? route('role.dashboard') : route('student.dashboard')}}" class="overflow-hidden rounded-full h-11 w-11 block">
+                        <img src="{{ asset('images/user/owner.png') }}" alt="User"
+                            class="w-full h-full object-cover" />
+                    </a> --}}
 
                 </div>
 
@@ -175,6 +181,11 @@
                     Information</a>
                 <a href="{{ route('contact') }}"
                     class="{{ request()->routeIs('contact') ? 'text-brand-600 font-medium' : 'text-white' }}">Contact</a>
+
+                <div class="mt-4">
+                    <a href="#"
+                        class="text-sm   bg-brand-600 text-white px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg font-normal hover:bg-brand-600 transition">Dashboard</a>
+                </div>
 
                 {{-- <div class="flex items-center gap-4>
                     <button

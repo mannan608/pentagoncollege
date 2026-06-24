@@ -43,8 +43,12 @@ Route::post('/subscribe', [SubscriberController::class, 'store'])
 
 Route::get('student/register', [StudentController::class, 'showRegister'])->name('register');
 Route::post('student/register', [StudentController::class, 'register'])->name('register.submit');
-// Route::get('student/login', [StudentController::class, 'showLogin'])
-//     ->name('student.login');
 
-// Route::post('student/login', [StudentController::class, 'login'])
-//     ->name('student.login.submit');
+
+    Route::prefix('student')
+    ->name('student.')
+    ->middleware(['auth', 'active.user'])
+    ->group(function () {
+        Route::get('/dashboard', [StudentController::class, 'dashboard'])
+            ->name('dashboard');
+    });
