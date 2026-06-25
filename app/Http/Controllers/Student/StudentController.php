@@ -16,6 +16,13 @@ class StudentController extends Controller
 {
     public function dashboard()
     {
+
         return view('frontend.pages.student.dashboard');
+    }
+
+      public function profile()
+    {
+        
+        return view('frontend.pages.student.profile');
     }
 }

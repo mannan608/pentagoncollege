@@ -55,4 +55,6 @@ Route::prefix('student')
     ->group(function () {
         Route::get('/dashboard', [StudentController::class, 'dashboard'])
             ->name('dashboard');
+             Route::get('/profile', [StudentController::class, 'profile'])
+            ->name('profile');
     });
